@@ -8,16 +8,16 @@
 
 <style>
   :root {
-    --bg:      #10152e;
-    --surface: #181f3a;
-    --panel:   #1f2847;
-    --border:  #2e3a60;
-    --accent:  #5d78ff;
-    --accent2: #ff6b9d;
-    --text:    #d0daf0;
-    --muted:   #6a7aa0;
-    --mono:    'Space Mono', monospace;
-    --sans:    'Syne', sans-serif;
+    --bg:        #10152e;
+    --surface:   #181f3a;
+    --panel:     #1f2847;
+    --border:    #2e3a60;
+    --accent:    #5d78ff;
+    --accent2:   #ff6b9d;
+    --text:      #d0daf0;
+    --muted:     #6a7aa0;
+    --mono:      'Space Mono', monospace;
+    --sans:      'Syne', sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,13 +41,17 @@
     z-index: 0;
   }
 
-  /* ── SCREENS ── */
+  /* ---------- SCREENS ---------- */
   .screen {
-    position: fixed; inset: 0;
+    position: fixed;
+    inset: 0;
     background: var(--bg);
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     z-index: 9999;
+    gap: 0;
   }
 
   .screen-card {
@@ -56,8 +60,11 @@
     border-radius: 16px;
     padding: 44px 48px;
     width: 380px;
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
-    box-shadow: 0 0 80px rgba(93,120,255,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 0 80px rgba(93,120,255,0.08), 0 0 0 1px var(--border);
     animation: fadeUp 0.4s ease both;
   }
 
@@ -66,252 +73,732 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .screen-card h2 { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
-  .screen-card .sub { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .screen-card h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .screen-card .sub {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
 
   .input-field {
-    width: 100%; padding: 11px 14px;
-    font-family: var(--mono); font-size: 0.9rem;
-    background: var(--panel); border: 1px solid var(--border);
-    border-radius: 8px; color: var(--text); outline: none;
+    width: 100%;
+    padding: 11px 14px;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    outline: none;
     transition: border-color 0.2s;
   }
   .input-field:focus { border-color: var(--accent); }
 
   .btn {
-    width: 100%; padding: 12px;
-    font-family: var(--sans); font-size: 0.95rem; font-weight: 700;
-    border: none; border-radius: 8px; cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
     transition: opacity 0.15s, transform 0.1s;
   }
   .btn:hover { opacity: 0.85; transform: translateY(-1px); }
-  .btn-primary   { background: var(--accent);  color: #fff; }
-  .btn-secondary { background: var(--panel);   color: var(--text); border: 1px solid var(--border); }
+  .btn-primary   { background: var(--accent); color: #fff; }
+  .btn-secondary { background: var(--panel); color: var(--text); border: 1px solid var(--border); }
 
   .err     { color: #ff6b6b; font-family: var(--mono); font-size: 0.75rem; min-height: 1em; text-align: center; }
   .divider { width: 100%; height: 1px; background: var(--border); margin: 4px 0; }
 
-  /* ── MAIN ── */
-  #main-content { flex: 1; display: none; flex-direction: column; overflow: hidden; position: relative; z-index: 1; }
+  /* ---------- MAIN ---------- */
+  #main-content {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
 
+  /* ---------- TOPBAR ---------- */
   #topbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px; height: 56px;
-    background: var(--surface); border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 56px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
     flex-shrink: 0;
   }
-  #topbar .logo { font-family: var(--mono); font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); }
+
+  #topbar .logo {
+    font-family: var(--mono);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
   #topbar .logo span { color: var(--accent2); }
 
   #online-pill {
-    font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
-    background: var(--panel); border: 1px solid var(--border);
-    border-radius: 100px; padding: 4px 12px;
-    display: flex; align-items: center; gap: 6px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
   #online-pill::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: #4ade80; box-shadow: 0 0 6px #4ade80;
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
   }
 
+  #user-badge {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ---------- NAV TABS ---------- */
   #nav-tabs {
-    display: flex; gap: 2px; padding: 10px 20px 0;
-    background: var(--surface); border-bottom: 1px solid var(--border);
-    flex-shrink: 0; overflow-x: auto;
+    display: flex;
+    gap: 2px;
+    padding: 10px 20px 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    overflow-x: auto;
   }
   #nav-tabs::-webkit-scrollbar { display: none; }
 
   .tab-btn {
-    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.07em;
-    text-transform: uppercase; padding: 8px 16px 10px;
-    background: transparent; border: none; border-bottom: 2px solid transparent;
-    color: var(--muted); cursor: pointer; white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 8px 16px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
     transition: color 0.2s, border-color 0.2s;
   }
   .tab-btn:hover  { color: var(--text); }
   .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-  #pages-area { flex: 1; overflow-y: auto; padding: 28px; }
+  /* ---------- PAGES AREA ---------- */
+  #pages-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px 28px;
+  }
   #pages-area::-webkit-scrollbar { width: 4px; }
+  #pages-area::-webkit-scrollbar-track { background: transparent; }
   #pages-area::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
   .page { display: none; }
   .page.active { display: block; animation: fadeIn 0.25s ease; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* ── PAGE HEADERS ── */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ---------- PAGE HEADER ---------- */
   .page-header { margin-bottom: 28px; }
-  .page-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -1px; color: #fff; line-height: 1; }
-  .page-header .eyebrow { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent2); margin-bottom: 6px; }
-  .page-header .rule { height: 2px; width: 60px; background: linear-gradient(90deg, var(--accent), var(--accent2)); margin-top: 12px; border-radius: 2px; }
+  .page-header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #fff;
+    line-height: 1;
+  }
+  .page-header .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+  .page-header .rule {
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    margin-top: 12px;
+    border-radius: 2px;
+  }
 
-  /* ── PLACEHOLDERS ── */
-  .placeholder-block { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-bottom: 16px; }
-  .placeholder-label { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
-  .placeholder-text  { font-family: var(--mono); font-size: 0.9rem; color: var(--muted); font-style: italic; opacity: 0.6; }
-  .placeholder-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 16px; }
-  .placeholder-card  { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden; }
-  .placeholder-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0.5; }
+  /* ---------- PLACEHOLDER BLOCKS ---------- */
+  .placeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
 
-  /* ── HOME ── */
-  #home-page { display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 70vh; gap: 32px; }
+  .placeholder-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .placeholder-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0.5;
+  }
+
+  .placeholder-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .placeholder-text {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  .placeholder-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .placeholder-block::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(93,120,255,0.02) 10px,
+      rgba(93,120,255,0.02) 20px
+    );
+    pointer-events: none;
+  }
+
+  /* ---------- HOME PAGE ---------- */
+  #home-page {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+    gap: 32px;
+  }
   #home-page.active { display: flex; }
-  .home-title { font-size: clamp(2.8rem, 8vw, 5.5rem); font-weight: 800; letter-spacing: -3px; line-height: 0.95; color: #fff; }
-  .home-title em { color: var(--accent2); font-style: normal; }
-  .home-rule { height: 2px; width: 80px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
-  .home-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 36px; max-width: 560px; width: 100%; font-family: var(--mono); font-size: 0.9rem; color: var(--muted); font-style: italic; line-height: 1.7; }
 
-  /* ── FORUM ── */
-  .forum-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
-  .forum-subtext { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
+  .home-title {
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 0.95;
+    color: #fff;
+  }
+  .home-title em { color: var(--accent2); font-style: normal; }
+
+  .home-rule {
+    height: 2px;
+    width: 80px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    margin: 0 auto;
+  }
+
+  .home-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 36px;
+    max-width: 560px;
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* ---------- FORUM ---------- */
+  .forum-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .forum-subtext {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
 
   .forum-create-btn {
-    padding: 10px 22px; background: var(--accent); border: none;
-    border-radius: 8px; color: #fff; font-family: var(--sans);
-    font-weight: 700; font-size: 0.88rem; cursor: pointer;
+    padding: 10px 22px;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
     transition: opacity 0.15s, transform 0.1s;
   }
   .forum-create-btn:hover { opacity: 0.85; transform: translateY(-1px); }
 
-  #forum-posts { display: flex; flex-direction: column; gap: 16px; }
+  #forum-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
   .forum-post {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 22px 24px;
-    position: relative; overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    position: relative;
+    overflow: hidden;
     animation: fadeIn 0.3s ease;
   }
   .forum-post::before {
-    content: ''; position: absolute; top: 0; left: 0; bottom: 0;
-    width: 3px; background: linear-gradient(180deg, var(--accent), var(--accent2));
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
   }
 
-  .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
   .post-avatar {
-    width: 34px; height: 34px; border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--mono); font-size: 0.75rem; color: #fff; font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: #fff;
+    font-weight: 700;
     flex-shrink: 0;
   }
-  .post-author { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); font-weight: 700; }
-  .post-time   { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); margin-top: 2px; }
-  .post-body   { font-size: 0.92rem; line-height: 1.7; color: var(--text); }
 
-  .forum-empty { text-align: center; padding: 60px 20px; font-family: var(--mono); font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+  .post-author {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 700;
+  }
 
-  /* ── MODALS ── */
+  .post-time {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .post-body {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .forum-empty {
+    text-align: center;
+    padding: 60px 20px;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ---------- MODALS ---------- */
   .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(10,14,35,0.88);
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 35, 0.88);
     backdrop-filter: blur(4px);
-    z-index: 8888; display: none;
-    justify-content: center; align-items: center;
+    z-index: 8888;
+    display: none;
+    justify-content: center;
+    align-items: center;
   }
   .modal-overlay.open { display: flex; }
 
   .modal-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; padding: 36px 40px;
-    width: 540px; max-width: 92vw;
-    display: flex; flex-direction: column; gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 40px;
+    width: 540px;
+    max-width: 92vw;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     animation: fadeUp 0.3s ease both;
   }
-  .modal-card h3 { font-size: 1.2rem; font-weight: 800; color: #fff; }
+
+  .modal-card h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+  }
 
   .modal-prompt {
-    font-family: var(--mono); font-size: 0.8rem; color: var(--accent2);
-    line-height: 1.6; background: var(--panel);
-    border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent2);
+    line-height: 1.6;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
   }
 
   .modal-textarea {
-    width: 100%; min-height: 140px; padding: 12px 14px;
-    font-family: var(--mono); font-size: 0.85rem;
-    background: var(--panel); border: 1px solid var(--border);
-    border-radius: 8px; color: var(--text); outline: none; resize: vertical;
+    width: 100%;
+    min-height: 140px;
+    padding: 12px 14px;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    outline: none;
+    resize: vertical;
     transition: border-color 0.2s;
   }
   .modal-textarea:focus { border-color: var(--accent); }
 
-  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-  .modal-cancel {
-    padding: 10px 20px; background: var(--panel); border: 1px solid var(--border);
-    border-radius: 8px; color: var(--muted); font-family: var(--sans);
-    font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: opacity 0.15s;
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
   }
-  .modal-cancel:hover { opacity: 0.8; }
+
+  .modal-cancel-btn {
+    padding: 10px 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .modal-cancel-btn:hover { opacity: 0.8; }
+
   .modal-post-btn {
-    padding: 10px 24px; background: var(--accent); border: none;
-    border-radius: 8px; color: #fff; font-family: var(--sans);
-    font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: opacity 0.15s;
+    padding: 10px 24px;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
   }
   .modal-post-btn:hover { opacity: 0.85; }
   .modal-post-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
   /* Email modal */
   .email-modal-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 16px; padding: 40px;
-    width: 480px; max-width: 92vw;
-    display: flex; flex-direction: column; align-items: center; gap: 16px;
-    text-align: center; animation: fadeUp 0.3s ease both;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+    width: 480px;
+    max-width: 92vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    animation: fadeUp 0.3s ease both;
   }
+
   .email-modal-card .fist { font-size: 3rem; line-height: 1; }
-  .email-modal-card h3 { font-size: 1.3rem; font-weight: 800; color: #fff; }
-  .email-modal-card p { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); line-height: 1.8; max-width: 340px; }
-  .email-address { font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); font-weight: 700; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 20px; }
-  .email-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+
+  .email-modal-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .email-modal-card p {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 340px;
+  }
+
+  .email-address {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent2);
+    font-weight: 700;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 20px;
+  }
+
+  .email-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
   .email-send-btn {
-    padding: 12px 28px; background: var(--accent2); border: none;
-    border-radius: 8px; color: #fff; font-family: var(--sans);
-    font-weight: 700; font-size: 0.9rem; cursor: pointer;
-    text-decoration: none; display: inline-block; transition: opacity 0.15s;
+    padding: 12px 28px;
+    background: var(--accent2);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.15s;
   }
   .email-send-btn:hover { opacity: 0.85; }
+
   .email-skip-btn {
-    padding: 12px 28px; background: var(--panel); border: 1px solid var(--border);
-    border-radius: 8px; color: var(--muted); font-family: var(--sans);
-    font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: opacity 0.15s;
+    padding: 12px 28px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
   }
   .email-skip-btn:hover { opacity: 0.8; }
 
-  /* ── CHAT ── */
-  #chat-page { height: 100%; display: none; flex-direction: column; }
+  /* ---------- CHAT ---------- */
+  #chat-page {
+    height: 100%;
+    display: none;
+    flex-direction: column;
+  }
   #chat-page.active { display: flex; }
-  #chat-wrap { display: flex; flex-direction: column; height: calc(100vh - 56px - 48px - 56px); background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-  #chat-header { padding: 14px 20px; background: var(--panel); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); flex-shrink: 0; }
-  #chat-header .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 6px #4ade80; }
-  #chat-box { flex: 1; overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; }
+
+  #chat-wrap {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 56px - 48px - 56px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  #chat-header {
+    padding: 14px 20px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  #chat-header .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+  }
+
+  #chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
   #chat-box::-webkit-scrollbar { width: 4px; }
+  #chat-box::-webkit-scrollbar-track { background: transparent; }
   #chat-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-  .msg { display: flex; flex-direction: column; gap: 4px; max-width: 72%; }
+
+  .msg {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 72%;
+  }
   .msg.mine  { align-self: flex-end;   align-items: flex-end; }
   .msg.other { align-self: flex-start; align-items: flex-start; }
-  .msg-meta  { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); }
+
+  .msg-meta {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
   .msg-email { color: var(--accent); font-weight: 700; }
   .msg.mine .msg-email { color: var(--accent2); }
-  .msg-bubble { padding: 10px 14px; border-radius: 12px; font-size: 0.88rem; line-height: 1.5; word-break: break-word; }
+
+  .msg-bubble {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    word-break: break-word;
+  }
   .msg.mine  .msg-bubble { background: var(--accent); color: #fff; border-bottom-right-radius: 3px; }
   .msg.other .msg-bubble { background: var(--panel); color: var(--text); border: 1px solid var(--border); border-bottom-left-radius: 3px; }
-  #chat-footer { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 10px; flex-shrink: 0; background: var(--panel); }
-  #chat-input { flex: 1; padding: 10px 14px; font-family: var(--mono); font-size: 0.85rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); outline: none; transition: border-color 0.2s; }
+
+  #chat-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    background: var(--panel);
+  }
+
+  #chat-input {
+    flex: 1;
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
   #chat-input:focus { border-color: var(--accent); }
-  #send-btn { padding: 10px 20px; background: var(--accent); border: none; border-radius: 8px; color: #fff; font-family: var(--sans); font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: opacity 0.15s; }
+
+  #send-btn {
+    padding: 10px 20px;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
   #send-btn:hover { opacity: 0.85; }
 
-  /* ── CONTACT ── */
-  .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
-  .contact-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 6px; }
-  .ci-label { font-family: var(--mono); font-size: 0.65rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; }
-  .ci-val   { font-family: var(--mono); font-size: 0.85rem; color: var(--muted); font-style: italic; opacity: 0.6; }
+  /* ---------- CONTACT ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
 
-  #user-badge { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); background: var(--panel); border: 1px solid var(--border); border-radius: 100px; padding: 4px 12px; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .contact-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .ci-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .ci-val {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    opacity: 0.6;
+  }
 </style>
 </head>
 <body>
 
-<!-- ── AUTH ── -->
+<!-- ========== AUTH SCREEN ========== -->
 <div class="screen" id="auth-screen">
   <div class="screen-card">
     <div class="sub">Hands Off OSAP // access</div>
@@ -325,20 +812,20 @@
   </div>
 </div>
 
-<!-- ── POST MODAL ── -->
+<!-- ========== POST MODAL ========== -->
 <div class="modal-overlay" id="post-modal">
   <div class="modal-card">
     <h3>Share Your Story</h3>
     <div class="modal-prompt">"How will OSAP cuts affect you personally?"</div>
     <textarea class="modal-textarea" id="post-textarea" placeholder="Write your response here..."></textarea>
     <div class="modal-actions">
-      <button class="modal-cancel"   id="modal-cancel"  type="button">Cancel</button>
-      <button class="modal-post-btn" id="modal-post-btn" type="button">Post</button>
+      <button class="modal-cancel-btn" id="modal-cancel"   type="button">Cancel</button>
+      <button class="modal-post-btn"   id="modal-post-btn" type="button">Post</button>
     </div>
   </div>
 </div>
 
-<!-- ── EMAIL MODAL ── -->
+<!-- ========== EMAIL MODAL ========== -->
 <div class="modal-overlay" id="email-modal">
   <div class="email-modal-card">
     <div class="fist">✊</div>
@@ -353,15 +840,17 @@
   </div>
 </div>
 
-<!-- ── MAIN ── -->
+<!-- ========== MAIN CONTENT ========== -->
 <div id="main-content">
 
+  <!-- TOPBAR -->
   <div id="topbar">
     <div class="logo">Hands Off <span>OSAP</span></div>
     <div id="online-pill">0 online</div>
     <div id="user-badge">—</div>
   </div>
 
+  <!-- NAV TABS -->
   <div id="nav-tabs">
     <button class="tab-btn active" data-page="home-page">Home</button>
     <button class="tab-btn" data-page="about-page">About</button>
@@ -372,6 +861,7 @@
     <button class="tab-btn" data-page="contact-page">Contact</button>
   </div>
 
+  <!-- PAGES -->
   <div id="pages-area">
 
     <!-- HOME -->
@@ -390,16 +880,25 @@
       </div>
       <div class="placeholder-block">
         <div class="placeholder-label">Bio</div>
-        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
       </div>
       <div class="placeholder-grid">
-        <div class="placeholder-card"><div class="placeholder-label">Background</div><div class="placeholder-text">Chicken fingers</div></div>
-        <div class="placeholder-card"><div class="placeholder-label">Skills</div><div class="placeholder-text">Chicken fingers</div></div>
-        <div class="placeholder-card"><div class="placeholder-label">Interests</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Background</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Skills</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Interests</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
       </div>
     </div>
 
-    <!-- PROJECT CONTENT / FORUM -->
+    <!-- PROJECT CONTENT — FORUM -->
     <div id="projects-page" class="page">
       <div class="page-header">
         <div class="eyebrow">// community voices</div>
@@ -422,9 +921,18 @@
         <h1>News</h1>
         <div class="rule"></div>
       </div>
-      <div class="placeholder-block"><div class="placeholder-label">Latest — mm/dd/yyyy</div><div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div></div>
-      <div class="placeholder-block"><div class="placeholder-label">Archive — mm/dd/yyyy</div><div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div></div>
-      <div class="placeholder-block"><div class="placeholder-label">Archive — mm/dd/yyyy</div><div class="placeholder-text">Chicken fingers. Chicken fingers.</div></div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Latest — mm/dd/yyyy</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers chicken fingers chicken fingers.</div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Archive — mm/dd/yyyy</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Archive — mm/dd/yyyy</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
     </div>
 
     <!-- CONNECT -->
@@ -434,19 +942,37 @@
         <h1>Connect</h1>
         <div class="rule"></div>
       </div>
-      <div class="placeholder-block"><div class="placeholder-label">Introduction</div><div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div></div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Introduction</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
       <div class="placeholder-grid">
-        <div class="placeholder-card"><div class="placeholder-label">Platform 01</div><div class="placeholder-text">Chicken fingers</div></div>
-        <div class="placeholder-card"><div class="placeholder-label">Platform 02</div><div class="placeholder-text">Chicken fingers</div></div>
-        <div class="placeholder-card"><div class="placeholder-label">Platform 03</div><div class="placeholder-text">Chicken fingers</div></div>
-        <div class="placeholder-card"><div class="placeholder-label">Platform 04</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Platform 01</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Platform 02</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Platform 03</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Platform 04</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
       </div>
     </div>
 
-    <!-- CHAT -->
+    <!-- VIRTUAL CHAT -->
     <div id="chat-page" class="page">
       <div id="chat-wrap">
-        <div id="chat-header"><div class="dot"></div>virtual chat — live</div>
+        <div id="chat-header">
+          <div class="dot"></div>
+          virtual chat — live
+        </div>
         <div id="chat-box"></div>
         <div id="chat-footer">
           <input id="chat-input" placeholder="Send a message..." />
@@ -462,23 +988,41 @@
         <h1>Contact</h1>
         <div class="rule"></div>
       </div>
-      <div class="placeholder-block"><div class="placeholder-label">Get In Touch</div><div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div></div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Get In Touch</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
       <div class="contact-grid">
-        <div class="contact-item"><div class="ci-label">Email</div><div class="ci-val">chicken@fingers.com</div></div>
-        <div class="contact-item"><div class="ci-label">Location</div><div class="ci-val">Chicken fingers</div></div>
-        <div class="contact-item"><div class="ci-label">Phone</div><div class="ci-val">Chicken fingers</div></div>
-        <div class="contact-item"><div class="ci-label">Other</div><div class="ci-val">Chicken fingers</div></div>
+        <div class="contact-item">
+          <div class="ci-label">Email</div>
+          <div class="ci-val">chicken@fingers.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-label">Location</div>
+          <div class="ci-val">Chicken fingers</div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-label">Phone</div>
+          <div class="ci-val">Chicken fingers</div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-label">Other</div>
+          <div class="ci-val">Chicken fingers</div>
+        </div>
       </div>
     </div>
 
-  </div>
-</div>
+  </div><!-- /pages-area -->
+</div><!-- /main-content -->
 
-<!-- ── SCRIPT ── -->
+<!-- ========== FIREBASE + LOGIC ========== -->
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getDatabase, ref, set, push, onValue, onDisconnect } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import { getDatabase, ref, set, push, onValue, onDisconnect }
+  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey:            "AIzaSyB1uImeDQJWGBOsq-i1lrcKjNY3SlqyuIA",
@@ -495,35 +1039,36 @@ const app  = initializeApp(firebaseConfig);
 const db   = getDatabase(app);
 const auth = getAuth(app);
 
-/* DOM */
-const authScreen    = document.getElementById("auth-screen");
-const mainContent   = document.getElementById("main-content");
-const authEmailEl   = document.getElementById("auth-email");
-const authPassEl    = document.getElementById("auth-password");
-const loginBtn      = document.getElementById("login-btn");
-const signupBtn     = document.getElementById("signup-btn");
-const authError     = document.getElementById("auth-error");
-const onlinePill    = document.getElementById("online-pill");
-const userBadge     = document.getElementById("user-badge");
-const chatBox       = document.getElementById("chat-box");
-const chatInput     = document.getElementById("chat-input");
-const sendBtn       = document.getElementById("send-btn");
-const postModal     = document.getElementById("post-modal");
-const emailModal    = document.getElementById("email-modal");
-const openPostBtn   = document.getElementById("open-post-modal");
-const modalCancel   = document.getElementById("modal-cancel");
-const modalPostBtn  = document.getElementById("modal-post-btn");
-const postTextarea  = document.getElementById("post-textarea");
-const emailSendBtn  = document.getElementById("email-send-btn");
-const emailSkipBtn  = document.getElementById("email-skip-btn");
-const forumPosts    = document.getElementById("forum-posts");
+/* ── DOM refs ── */
+const authScreen   = document.getElementById("auth-screen");
+const mainContent  = document.getElementById("main-content");
+const authEmailEl  = document.getElementById("auth-email");
+const authPassEl   = document.getElementById("auth-password");
+const loginBtn     = document.getElementById("login-btn");
+const signupBtn    = document.getElementById("signup-btn");
+const authError    = document.getElementById("auth-error");
+const onlinePill   = document.getElementById("online-pill");
+const userBadge    = document.getElementById("user-badge");
+const chatBox      = document.getElementById("chat-box");
+const chatInput    = document.getElementById("chat-input");
+const sendBtn      = document.getElementById("send-btn");
+const postModal    = document.getElementById("post-modal");
+const emailModal   = document.getElementById("email-modal");
+const openPostBtn  = document.getElementById("open-post-modal");
+const modalCancel  = document.getElementById("modal-cancel");
+const modalPostBtn = document.getElementById("modal-post-btn");
+const postTextarea = document.getElementById("post-textarea");
+const emailSendBtn = document.getElementById("email-send-btn");
+const emailSkipBtn = document.getElementById("email-skip-btn");
+const forumPosts   = document.getElementById("forum-posts");
 
-/* Auth */
+/* ── Auth ── */
 loginBtn.onclick = () => {
   authError.textContent = "";
   signInWithEmailAndPassword(auth, authEmailEl.value, authPassEl.value)
     .catch(e => authError.textContent = friendlyError(e.code));
 };
+
 signupBtn.onclick = () => {
   authError.textContent = "";
   createUserWithEmailAndPassword(auth, authEmailEl.value, authPassEl.value)
@@ -544,16 +1089,16 @@ function friendlyError(code) {
 
 onAuthStateChanged(auth, user => {
   if (user) {
-    authScreen.style.display = "none";
+    authScreen.style.display  = "none";
     mainContent.style.display = "flex";
     start(user);
   } else {
-    authScreen.style.display = "flex";
+    authScreen.style.display  = "flex";
     mainContent.style.display = "none";
   }
 });
 
-let started = false;
+let started      = false;
 let currentEmail = "";
 
 function start(user) {
@@ -576,7 +1121,7 @@ function start(user) {
   setupForum();
 }
 
-/* Navigation */
+/* ── Navigation ── */
 function setupNav() {
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.onclick = () => {
@@ -584,18 +1129,23 @@ function setupNav() {
       document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
       btn.classList.add("active");
       document.getElementById(btn.dataset.page).classList.add("active");
-      if (btn.dataset.page === "chat-page") setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 50);
+      if (btn.dataset.page === "chat-page") {
+        setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 50);
+      }
     };
   });
 }
 
-/* Chat */
+/* ── Chat ── */
 function setupChat(email) {
   const chatRef = ref(db, "chat");
-  sendBtn.onclick = send;
-  chatInput.addEventListener("keypress", e => { if (e.key === "Enter") send(); });
 
-  function send() {
+  sendBtn.onclick = sendMessage;
+  chatInput.addEventListener("keypress", e => {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  function sendMessage() {
     const txt = chatInput.value.trim();
     if (!txt) return;
     push(chatRef, { name: email, text: txt, time: Date.now() });
@@ -607,13 +1157,14 @@ function setupChat(email) {
     snap.forEach(m => {
       const v      = m.val();
       const isMine = v.name === email;
+
       const wrap   = document.createElement("div");
       wrap.className = "msg " + (isMine ? "mine" : "other");
 
-      const meta  = document.createElement("div");
+      const meta   = document.createElement("div");
       meta.className = "msg-meta";
-      const hhmm  = new Date(v.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-      const espan = document.createElement("span");
+      const hhmm   = new Date(v.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      const espan  = document.createElement("span");
       espan.className   = "msg-email";
       espan.textContent = v.name;
       meta.appendChild(espan);
@@ -631,17 +1182,20 @@ function setupChat(email) {
   });
 }
 
-/* Forum */
+/* ── Forum ── */
 function setupForum() {
-  /* Open modal */
+
+  /* Open post modal */
   openPostBtn.onclick = () => {
     postTextarea.value = "";
     postModal.classList.add("open");
   };
 
-  /* Close modal */
+  /* Close post modal */
   modalCancel.onclick = () => postModal.classList.remove("open");
-  postModal.addEventListener("click", e => { if (e.target === postModal) postModal.classList.remove("open"); });
+  postModal.addEventListener("click", e => {
+    if (e.target === postModal) postModal.classList.remove("open");
+  });
 
   /* Submit post */
   modalPostBtn.onclick = async () => {
@@ -649,7 +1203,7 @@ function setupForum() {
     if (!text) return;
 
     modalPostBtn.textContent = "Posting...";
-    modalPostBtn.disabled = true;
+    modalPostBtn.disabled    = true;
 
     try {
       await push(ref(db, "forum_posts"), {
@@ -664,11 +1218,11 @@ function setupForum() {
       alert("Something went wrong. Please try again.");
     } finally {
       modalPostBtn.textContent = "Post";
-      modalPostBtn.disabled = false;
+      modalPostBtn.disabled    = false;
     }
   };
 
-  /* Load posts */
+  /* Load + display posts in real time */
   onValue(ref(db, "forum_posts"), snap => {
     forumPosts.innerHTML = "";
     if (!snap.exists()) {
@@ -680,9 +1234,11 @@ function setupForum() {
     posts.forEach(post => forumPosts.appendChild(buildPost(post)));
   });
 
-  /* Email modal */
+  /* Close email modal */
   emailSkipBtn.onclick = () => emailModal.classList.remove("open");
-  emailModal.addEventListener("click", e => { if (e.target === emailModal) emailModal.classList.remove("open"); });
+  emailModal.addEventListener("click", e => {
+    if (e.target === emailModal) emailModal.classList.remove("open");
+  });
 }
 
 function showEmailModal(postText) {
@@ -693,10 +1249,12 @@ function showEmailModal(postText) {
 }
 
 function buildPost(post) {
-  const el       = document.createElement("div");
-  el.className   = "forum-post";
-  const initial  = post.author ? post.author[0].toUpperCase() : "?";
-  const time     = new Date(post.time).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  const el      = document.createElement("div");
+  el.className  = "forum-post";
+  const initial = post.author ? post.author[0].toUpperCase() : "?";
+  const time    = new Date(post.time).toLocaleString([], {
+    month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"
+  });
 
   el.innerHTML = `
     <div class="post-meta">
@@ -713,9 +1271,9 @@ function buildPost(post) {
 
 function escapeHTML(str) {
   return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
+    .replace(/&/g,  "&amp;")
+    .replace(/</g,  "&lt;")
+    .replace(/>/g,  "&gt;")
     .replace(/\n/g, "<br>");
 }
 </script>
