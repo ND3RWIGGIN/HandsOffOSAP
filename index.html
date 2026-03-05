@@ -469,6 +469,24 @@
     line-height: 1.8;
   }
 
+  .delete-post-btn {
+    padding: 5px 12px;
+    background: transparent;
+    border: 1px solid #ff6b6b;
+    border-radius: 6px;
+    color: #ff6b6b;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  .delete-post-btn:hover {
+    background: #ff6b6b;
+    color: #fff;
+  }
+
   /* ---------- MODALS ---------- */
   .modal-overlay {
     position: fixed;
@@ -1019,7 +1037,7 @@
 <script type="module">
 import { initializeApp }
   from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getDatabase, ref, set, push, onValue, onDisconnect }
+import { getDatabase, ref, set, push, onValue, onDisconnect, remove }
   from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
@@ -1185,19 +1203,16 @@ function setupChat(email) {
 /* ── Forum ── */
 function setupForum() {
 
-  /* Open post modal */
   openPostBtn.onclick = () => {
     postTextarea.value = "";
     postModal.classList.add("open");
   };
 
-  /* Close post modal */
   modalCancel.onclick = () => postModal.classList.remove("open");
   postModal.addEventListener("click", e => {
     if (e.target === postModal) postModal.classList.remove("open");
   });
 
-  /* Submit post */
   modalPostBtn.onclick = async () => {
     const text = postTextarea.value.trim();
     if (!text) return;
@@ -1222,7 +1237,6 @@ function setupForum() {
     }
   };
 
-  /* Load + display posts in real time */
   onValue(ref(db, "forum_posts"), snap => {
     forumPosts.innerHTML = "";
     if (!snap.exists()) {
@@ -1234,7 +1248,6 @@ function setupForum() {
     posts.forEach(post => forumPosts.appendChild(buildPost(post)));
   });
 
-  /* Close email modal */
   emailSkipBtn.onclick = () => emailModal.classList.remove("open");
   emailModal.addEventListener("click", e => {
     if (e.target === emailModal) emailModal.classList.remove("open");
@@ -1256,16 +1269,27 @@ function buildPost(post) {
     month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"
   });
 
+  const canDelete = currentEmail === post.author || currentEmail === "eesanana@gmail.com";
+
   el.innerHTML = `
     <div class="post-meta">
       <div class="post-avatar">${initial}</div>
-      <div>
+      <div style="flex:1;">
         <div class="post-author">${post.author}</div>
         <div class="post-time">${time}</div>
       </div>
+      ${canDelete ? `<button class="delete-post-btn" data-id="${post.id}">✕ Delete</button>` : ""}
     </div>
     <div class="post-body">${escapeHTML(post.text)}</div>
   `;
+
+  if (canDelete) {
+    el.querySelector(".delete-post-btn").onclick = async () => {
+      if (!confirm("Delete this post?")) return;
+      await remove(ref(db, "forum_posts/" + post.id));
+    };
+  }
+
   return el;
 }
 
