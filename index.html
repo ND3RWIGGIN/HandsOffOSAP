@@ -295,52 +295,50 @@
     pointer-events: none;
   }
 
-  .home-hero {
-    min-height: 52vh;
-    display: flex;
+  /* HOME PAGE */
+  #home-page {
+    display: none;
     flex-direction: column;
     justify-content: center;
-    position: relative;
+    align-items: center;
+    text-align: center;
+    min-height: 70vh;
+    gap: 32px;
   }
-  .home-hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+  #home-page.active { display: flex; }
+
+  .home-title {
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
     font-weight: 800;
-    letter-spacing: -2px;
+    letter-spacing: -3px;
     line-height: 0.95;
     color: #fff;
   }
-  .home-hero h1 em { color: var(--accent2); font-style: normal; }
-  .home-hero .tagline {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-top: 20px;
-    letter-spacing: 0.06em;
-    max-width: 420px;
-    line-height: 1.7;
-  }
-  .home-stats {
-    display: flex;
-    gap: 32px;
-    margin-top: 36px;
-    flex-wrap: wrap;
-  }
-  .stat { display: flex; flex-direction: column; gap: 3px; }
-  .stat .num {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -1px;
-    line-height: 1;
-  }
-  .stat .lbl {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  .home-title em { color: var(--accent2); font-style: normal; }
+
+  .home-rule {
+    height: 2px;
+    width: 80px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    margin: 0 auto;
   }
 
+  .home-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 36px;
+    max-width: 560px;
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* CHAT */
   #chat-page {
     height: 100%;
     display: none;
@@ -383,7 +381,7 @@
     padding: 16px 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
   }
   #chat-box::-webkit-scrollbar { width: 4px; }
   #chat-box::-webkit-scrollbar-track { background: transparent; }
@@ -392,7 +390,7 @@
   .msg {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
     max-width: 72%;
   }
   .msg.mine { align-self: flex-end; align-items: flex-end; }
@@ -403,6 +401,13 @@
     font-size: 0.62rem;
     color: var(--muted);
     letter-spacing: 0.04em;
+  }
+  .msg-meta .msg-email {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .msg.mine .msg-meta .msg-email {
+    color: var(--accent2);
   }
 
   .msg-bubble {
@@ -545,33 +550,9 @@
 
     <!-- HOME -->
     <div id="home-page" class="page active">
-      <div class="home-hero">
-        <div class="page-header">
-          <div class="eyebrow">// welcome</div>
-          <h1>Hands Off<br><em>OSAP</em></h1>
-          <div class="rule"></div>
-        </div>
-        <p class="tagline">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers chicken fingers.</p>
-        <div class="home-stats">
-          <div class="stat"><div class="num">—</div><div class="lbl">Chicken fingers</div></div>
-          <div class="stat"><div class="num">—</div><div class="lbl">Chicken fingers</div></div>
-          <div class="stat"><div class="num">—</div><div class="lbl">Chicken fingers</div></div>
-        </div>
-      </div>
-      <div class="placeholder-grid">
-        <div class="placeholder-card">
-          <div class="placeholder-label">Feature 01</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Feature 02</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Feature 03</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-      </div>
+      <h1 class="home-title">Hands Off<br><em>OSAP</em></h1>
+      <div class="home-rule"></div>
+      <div class="home-box">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers chicken fingers.</div>
     </div>
 
     <!-- ABOUT -->
@@ -867,7 +848,15 @@ function setupChat(email) {
       const meta = document.createElement("div");
       meta.className = "msg-meta";
       const hhmm = new Date(v.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-      meta.textContent = isMine ? hhmm : v.name + " · " + hhmm;
+
+      const emailSpan = document.createElement("span");
+      emailSpan.className = "msg-email";
+      emailSpan.textContent = v.name;
+
+      const timeSpan = document.createTextNode(" · " + hhmm);
+
+      meta.appendChild(emailSpan);
+      meta.appendChild(timeSpan);
 
       const bubble = document.createElement("div");
       bubble.className = "msg-bubble";
