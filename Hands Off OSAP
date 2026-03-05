@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hands Off OSAP</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:        #10152e;
+    --surface:   #181f3a;
+    --panel:     #1f2847;
+    --border:    #2e3a60;
+    --accent:    #5d78ff;
+    --accent2:   #ff6b9d;
+    --text:      #d0daf0;
+    --muted:     #6a7aa0;
+    --mono:      'Space Mono', monospace;
+    --sans:      'Syne', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .screen {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    gap: 0;
+  }
+
+  .screen-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 44px 48px;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 0 80px rgba(93,120,255,0.08), 0 0 0 1px var(--border);
+    animation: fadeUp 0.4s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .screen-card h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .screen-card .sub {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .input-field:focus { border-color: var(--accent); }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+  .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-secondary { background: var(--panel); color: var(--text); border: 1px solid var(--border); }
+
+  .err { color: #ff6b6b; font-family: var(--mono); font-size: 0.75rem; min-height: 1em; text-align: center; }
+
+  .divider { width: 100%; height: 1px; background: var(--border); margin: 4px 0; }
+
+  #main-content { flex: 1; display: none; flex-direction: column; overflow: hidden; position: relative; z-index: 1; }
+
+  #topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 56px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  #topbar .logo {
+    font-family: var(--mono);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  #topbar .logo span { color: var(--accent2); }
+
+  #online-pill {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  #online-pill::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+  }
+
+  #nav-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 10px 20px 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    overflow-x: auto;
+  }
+  #nav-tabs::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 8px 16px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  #pages-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px 28px;
+  }
+  #pages-area::-webkit-scrollbar { width: 4px; }
+  #pages-area::-webkit-scrollbar-track { background: transparent; }
+  #pages-area::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .page-header { margin-bottom: 28px; }
+  .page-header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #fff;
+    line-height: 1;
+  }
+  .page-header .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+  .page-header .rule {
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    margin-top: 12px;
+    border-radius: 2px;
+  }
+
+  .placeholder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .placeholder-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .placeholder-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0.5;
+  }
+
+  .placeholder-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .placeholder-text {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  .placeholder-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .placeholder-block::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(93,120,255,0.02) 10px,
+      rgba(93,120,255,0.02) 20px
+    );
+    pointer-events: none;
+  }
+
+  .home-hero {
+    min-height: 52vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .home-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    color: #fff;
+  }
+  .home-hero h1 span { color: var(--accent); }
+  .home-hero h1 em { color: var(--accent2); font-style: normal; }
+  .home-hero .tagline {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 20px;
+    letter-spacing: 0.06em;
+    max-width: 420px;
+    line-height: 1.7;
+  }
+  .home-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; gap: 3px; }
+  .stat .num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .stat .lbl {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  #chat-page {
+    height: 100%;
+    display: none;
+    flex-direction: column;
+  }
+  #chat-page.active { display: flex; }
+
+  #chat-wrap {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 56px - 48px - 28px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  #chat-header {
+    padding: 14px 20px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  #chat-header .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 6px #4ade80;
+  }
+
+  #chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #chat-box::-webkit-scrollbar { width: 4px; }
+  #chat-box::-webkit-scrollbar-track { background: transparent; }
+  #chat-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .msg {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-width: 72%;
+  }
+  .msg.mine { align-self: flex-end; align-items: flex-end; }
+  .msg.other { align-self: flex-start; align-items: flex-start; }
+
+  .msg-meta {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .msg-bubble {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+  .msg.mine .msg-bubble {
+    background: var(--accent);
+    color: #fff;
+    border-bottom-right-radius: 3px;
+  }
+  .msg.other .msg-bubble {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 3px;
+  }
+
+  #chat-footer {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    background: var(--panel);
+  }
+
+  #chat-input {
+    flex: 1;
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #chat-input:focus { border-color: var(--accent); }
+
+  #send-btn {
+    padding: 10px 20px;
+    background: var(--accent);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  #send-btn:hover { opacity: 0.85; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .contact-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .contact-item .ci-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .contact-item .ci-val {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  #user-badge {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div class="screen" id="auth-screen">
+  <div class="screen-card">
+    <div class="sub">Hands Off OSAP // access</div>
+    <h2>Welcome Back</h2>
+    <input class="input-field" id="auth-email" type="email" placeholder="Email address" />
+    <input class="input-field" id="auth-password" type="password" placeholder="Password" />
+    <button class="btn btn-primary" id="login-btn" type="button">Log In</button>
+    <div class="divider"></div>
+    <button class="btn btn-secondary" id="signup-btn" type="button">Create Account</button>
+    <div class="err" id="auth-error"></div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+
+  <div id="topbar">
+    <div class="logo">Hands Off <span>OSAP</span></div>
+    <div id="online-pill">0 online</div>
+    <div id="user-badge">—</div>
+  </div>
+
+  <div id="nav-tabs">
+    <button class="tab-btn active" data-page="home-page">Home</button>
+    <button class="tab-btn" data-page="about-page">About</button>
+    <button class="tab-btn" data-page="projects-page">Project Content</button>
+    <button class="tab-btn" data-page="news-page">News</button>
+    <button class="tab-btn" data-page="connect-page">Connect</button>
+    <button class="tab-btn" data-page="chat-page">Virtual Chat</button>
+    <button class="tab-btn" data-page="contact-page">Contact</button>
+  </div>
+
+  <div id="pages-area">
+
+    <!-- HOME -->
+    <div id="home-page" class="page active">
+      <div class="home-hero">
+        <div class="page-header">
+          <div class="eyebrow">// welcome</div>
+          <h1>Hands Off<br><em>OSAP</em></h1>
+          <div class="rule"></div>
+        </div>
+        <p class="tagline">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers chicken fingers.</p>
+        <div class="home-stats">
+          <div class="stat"><div class="num">—</div><div class="lbl">Chicken fingers</div></div>
+          <div class="stat"><div class="num">—</div><div class="lbl">Chicken fingers</div></div>
+          <div class="stat"><div class="num">—</div><div class="lbl">Chicken fingers</div></div>
+        </div>
+      </div>
+      <div class="placeholder-grid">
+        <div class="placeholder-card">
+          <div class="placeholder-label">Feature 01</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Feature 02</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Feature 03</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div id="about-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// about</div>
+        <h1>About</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Bio</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
+      <div class="placeholder-grid">
+        <div class="placeholder-card">
+          <div class="placeholder-label">Background</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Skills</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Interests</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div id="projects-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// work</div>
+        <h1>Project Content</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Overview</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
+      <div class="placeholder-grid">
+        <div class="placeholder-card">
+          <div class="placeholder-label">Project 01</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Project 02</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Project 03</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Project 04</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Project 05</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Project 06</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <div id="news-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// updates</div>
+        <h1>News</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Latest — mm/dd/yyyy</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers chicken fingers chicken fingers.</div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Archive — mm/dd/yyyy</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Archive — mm/dd/yyyy</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
+    </div>
+
+    <!-- CONNECT -->
+    <div id="connect-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// network</div>
+        <h1>Connect</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Introduction</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
+      <div class="placeholder-grid">
+        <div class="placeholder-card">
+          <div class="placeholder-label">Platform 01</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Platform 02</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Platform 03</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+        <div class="placeholder-card">
+          <div class="placeholder-label">Platform 04</div>
+          <div class="placeholder-text">Chicken fingers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAT -->
+    <div id="chat-page" class="page">
+      <div id="chat-wrap">
+        <div id="chat-header">
+          <div class="dot"></div>
+          virtual chat — live
+        </div>
+        <div id="chat-box"></div>
+        <div id="chat-footer">
+          <input id="chat-input" placeholder="Send a message..." />
+          <button id="send-btn" type="button">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// reach out</div>
+        <h1>Contact</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="placeholder-block">
+        <div class="placeholder-label">Get In Touch</div>
+        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="ci-label">Email</div>
+          <div class="ci-val">chicken@fingers.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-label">Location</div>
+          <div class="ci-val">Chicken fingers</div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-label">Phone</div>
+          <div class="ci-val">Chicken fingers</div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-label">Other</div>
+          <div class="ci-val">Chicken fingers</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FIREBASE + LOGIC -->
+<script type="module">
+import { initializeApp }           from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+import { getDatabase, ref, set, onValue, push, onDisconnect }
+                                   from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged }
+                                   from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey:            "AIzaSyBUmJ9k5pS62TzIkRHswO2lJLnaeRIfGmE",
+  authDomain:        "jess-chat-box.firebaseapp.com",
+  projectId:         "jess-chat-box",
+  storageBucket:     "jess-chat-box.appspot.com",
+  messagingSenderId: "414967828897",
+  appId:             "1:414967828897:web:89045ed9bd4b3257c4bbe0",
+  databaseURL:       "https://jess-chat-box-default-rtdb.firebaseio.com"
+};
+
+const app  = initializeApp(firebaseConfig);
+const db   = getDatabase(app);
+const auth = getAuth(app);
+
+const authScreen   = document.getElementById("auth-screen");
+const mainContent  = document.getElementById("main-content");
+const authEmail    = document.getElementById("auth-email");
+const authPassword = document.getElementById("auth-password");
+const loginBtn     = document.getElementById("login-btn");
+const signupBtn    = document.getElementById("signup-btn");
+const authError    = document.getElementById("auth-error");
+const onlinePill   = document.getElementById("online-pill");
+const userBadge    = document.getElementById("user-badge");
+const chatBox      = document.getElementById("chat-box");
+const chatInput    = document.getElementById("chat-input");
+const sendBtn      = document.getElementById("send-btn");
+
+loginBtn.onclick = () => {
+  authError.textContent = "";
+  signInWithEmailAndPassword(auth, authEmail.value, authPassword.value)
+    .catch(e => authError.textContent = friendlyError(e.code));
+};
+signupBtn.onclick = () => {
+  authError.textContent = "";
+  createUserWithEmailAndPassword(auth, authEmail.value, authPassword.value)
+    .catch(e => authError.textContent = friendlyError(e.code));
+};
+
+function friendlyError(code) {
+  const map = {
+    "auth/invalid-email":        "Invalid email address.",
+    "auth/user-not-found":       "No account with that email.",
+    "auth/wrong-password":       "Incorrect password.",
+    "auth/email-already-in-use": "That email is already registered.",
+    "auth/weak-password":        "Password must be at least 6 characters.",
+    "auth/too-many-requests":    "Too many attempts. Try again later.",
+  };
+  return map[code] || "Something went wrong. Try again.";
+}
+
+onAuthStateChanged(auth, user => {
+  if (user) {
+    authScreen.style.display = "none";
+    mainContent.style.display = "flex";
+    start(user);
+  } else {
+    authScreen.style.display = "flex";
+    mainContent.style.display = "none";
+  }
+});
+
+let started = false;
+
+function start(user) {
+  if (started) return;
+  started = true;
+
+  userBadge.textContent = user.email;
+
+  const pRef = ref(db, "presence2/" + user.uid);
+  set(pRef, user.email);
+  onDisconnect(pRef).remove();
+
+  onValue(ref(db, "presence2"), snap => {
+    const count = Object.keys(snap.val() || {}).length;
+    onlinePill.textContent = count + " online";
+  });
+
+  setupChat(user.email);
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.page).classList.add("active");
+      if (btn.dataset.page === "chat-page") {
+        setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 50);
+      }
+    };
+  });
+}
+
+function setupChat(email) {
+  const chatRef = ref(db, "chat_v2");
+
+  sendBtn.onclick = sendMessage;
+  chatInput.addEventListener("keypress", e => { if (e.key === "Enter") sendMessage(); });
+
+  function sendMessage() {
+    const txt = chatInput.value.trim();
+    if (!txt) return;
+    push(chatRef, { name: email, text: txt, time: Date.now() });
+    chatInput.value = "";
+  }
+
+  onValue(chatRef, snap => {
+    chatBox.innerHTML = "";
+    snap.forEach(m => {
+      const v = m.val();
+      const isMine = v.name === email;
+      const wrap = document.createElement("div");
+      wrap.className = "msg " + (isMine ? "mine" : "other");
+
+      const meta = document.createElement("div");
+      meta.className = "msg-meta";
+      const hhmm = new Date(v.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      meta.textContent = isMine ? hhmm : v.name + " · " + hhmm;
+
+      const bubble = document.createElement("div");
+      bubble.className = "msg-bubble";
+      bubble.textContent = v.text;
+
+      wrap.appendChild(meta);
+      wrap.appendChild(bubble);
+      chatBox.appendChild(wrap);
+    });
+    chatBox.scrollTop = chatBox.scrollHeight;
+  });
+}
+</script>
+
+</body>
+</html>
