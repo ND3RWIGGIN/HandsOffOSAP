@@ -353,6 +353,7 @@
     pointer-events: none;
   }
 
+  /* HOME PAGE */
   #home-page {
     display: none;
     flex-direction: column;
@@ -360,7 +361,7 @@
     align-items: center;
     text-align: center;
     min-height: 70vh;
-    gap: 32px;
+    gap: 28px;
   }
   #home-page.active { display: flex; }
 
@@ -381,18 +382,57 @@
     margin: 0 auto;
   }
 
+  .home-hero {
+    width: 100%;
+    max-width: 760px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+
+  .home-hero img {
+    width: 100%;
+    display: block;
+    max-height: 320px;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(100%) contrast(1.05);
+    opacity: 0.88;
+  }
+
+  .home-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(16,21,46,0.72) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
   .home-box {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 28px 36px;
-    max-width: 560px;
+    padding: 24px 32px;
+    max-width: 660px;
     width: 100%;
     font-family: var(--mono);
-    font-size: 0.9rem;
-    color: var(--muted);
-    font-style: italic;
-    line-height: 1.7;
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .home-box::before {
+    content: '"';
+    position: absolute;
+    top: -18px;
+    left: 28px;
+    font-size: 4rem;
+    color: var(--accent2);
+    opacity: 0.4;
+    font-family: Georgia, serif;
+    line-height: 1;
   }
 
   .home-topics {
@@ -422,6 +462,7 @@
     background: rgba(255,107,157,0.07);
   }
 
+  /* FORUM */
   .forum-topbar {
     display: flex;
     align-items: center;
@@ -538,6 +579,7 @@
   }
   .delete-post-btn:hover { background: #ff6b6b; color: #fff; }
 
+  /* VIDEO PAGE */
   .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -654,6 +696,7 @@
     background: var(--border);
   }
 
+  /* MODALS */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -827,6 +870,7 @@
   }
   .email-skip-btn:hover { opacity: 0.8; }
 
+  /* CHAT */
   #chat-page {
     height: 100%;
     display: none;
@@ -943,6 +987,7 @@
   }
   #send-btn:hover { opacity: 0.85; }
 
+  /* CONTACT */
   .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -1050,7 +1095,11 @@
     <div id="home-page" class="page active">
       <h1 class="home-title">The Virtual<br><em>Student Network</em></h1>
       <div class="home-rule"></div>
-      <div class="home-box">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers chicken fingers.</div>
+      <div class="home-hero">
+        <img src="OSAP_PROTEST.jpg" alt="Students protest OSAP cuts at Queen's Park" />
+        <div class="home-hero-overlay"></div>
+      </div>
+      <div class="home-box">Our student hub serves as a way for students to voice their concerns about social issues through our digital platform. We use our social network as a platform for students to connect, be informed, and tackle current student issues.</div>
       <div class="home-topics">
         <span class="home-topic-pill">Student Rights</span>
         <span class="home-topic-pill">Campus Life</span>
