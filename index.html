@@ -193,6 +193,7 @@
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
     overflow-x: auto;
+    align-items: flex-end;
   }
   #nav-tabs::-webkit-scrollbar { display: none; }
 
@@ -213,17 +214,89 @@
   .tab-btn:hover  { color: var(--text); }
   .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-  .tab-btn .subtag {
-    font-size: 0.55rem;
-    background: rgba(255,107,157,0.15);
-    color: var(--accent2);
-    border: 1px solid rgba(255,107,157,0.3);
-    border-radius: 4px;
-    padding: 1px 5px;
-    margin-left: 5px;
-    vertical-align: middle;
-    letter-spacing: 0.06em;
+  /* TOPICS DROPDOWN */
+  .topics-dropdown {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
   }
+
+  .topics-btn {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 8px 16px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .topics-btn:hover { color: var(--text); }
+  .topics-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .topics-btn .chevron {
+    font-size: 0.55rem;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .topics-btn.open .chevron { transform: rotate(180deg); }
+
+  .topics-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    min-width: 200px;
+    z-index: 999;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    overflow: hidden;
+    animation: dropDown 0.15s ease both;
+  }
+  .topics-menu.open { display: block; }
+
+  @keyframes dropDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .topics-menu-item {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 12px 18px;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(46,58,96,0.5);
+    transition: background 0.15s, color 0.15s;
+  }
+  .topics-menu-item:last-child { border-bottom: none; }
+  .topics-menu-item:hover { background: var(--panel); color: var(--text); }
+  .topics-menu-item.active { color: var(--accent); background: rgba(93,120,255,0.08); }
+
+  .topics-menu-item .topic-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent2);
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+  .topics-menu-item.active .topic-dot { opacity: 1; }
 
   #pages-area {
     flex: 1;
@@ -353,6 +426,57 @@
     pointer-events: none;
   }
 
+  /* COMING SOON PAGE */
+  .coming-soon-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .coming-soon-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+  }
+
+  .coming-soon-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+
+  .coming-soon-sub {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 320px;
+  }
+
+  .coming-soon-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    background: rgba(93,120,255,0.1);
+    border: 1px solid rgba(93,120,255,0.25);
+    color: var(--accent);
+  }
+
   /* HOME PAGE */
   #home-page {
     display: none;
@@ -382,33 +506,6 @@
     margin: 0 auto;
   }
 
-  .home-hero {
-    width: 100%;
-    max-width: 760px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    position: relative;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-  }
-
-  .home-hero img {
-    width: 100%;
-    display: block;
-    max-height: 320px;
-    object-fit: cover;
-    object-position: center top;
-    filter: grayscale(100%) contrast(1.05);
-    opacity: 0.88;
-  }
-
-  .home-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(16,21,46,0.72) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
   .home-box {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -433,33 +530,6 @@
     opacity: 0.4;
     font-family: Georgia, serif;
     line-height: 1;
-  }
-
-  .home-topics {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 560px;
-  }
-
-  .home-topic-pill {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.07em;
-    padding: 6px 14px;
-    border-radius: 100px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    background: var(--panel);
-    cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .home-topic-pill:hover { border-color: var(--accent); color: var(--accent); }
-  .home-topic-pill.featured {
-    border-color: rgba(255,107,157,0.4);
-    color: var(--accent2);
-    background: rgba(255,107,157,0.07);
   }
 
   /* FORUM */
@@ -1080,7 +1150,34 @@
   <div id="nav-tabs">
     <button class="tab-btn active" data-page="home-page">Home</button>
     <button class="tab-btn" data-page="about-page">About</button>
-    <button class="tab-btn" data-page="projects-page">Project Content</button>
+
+    <!-- TOPICS DROPDOWN -->
+    <div class="topics-dropdown" id="topics-dropdown">
+      <button class="topics-btn" id="topics-btn" type="button">
+        Topics <span class="chevron">▼</span>
+      </button>
+      <div class="topics-menu" id="topics-menu">
+        <div class="topics-menu-item" data-page="osap-page">
+          <span class="topic-dot"></span> OSAP
+        </div>
+        <div class="topics-menu-item" data-page="student-rights-page">
+          <span class="topic-dot"></span> Student Rights
+        </div>
+        <div class="topics-menu-item" data-page="campus-life-page">
+          <span class="topic-dot"></span> Campus Life
+        </div>
+        <div class="topics-menu-item" data-page="mental-health-page">
+          <span class="topic-dot"></span> Mental Health
+        </div>
+        <div class="topics-menu-item" data-page="housing-page">
+          <span class="topic-dot"></span> Housing
+        </div>
+        <div class="topics-menu-item" data-page="tuition-page">
+          <span class="topic-dot"></span> Tuition
+        </div>
+      </div>
+    </div>
+
     <button class="tab-btn" data-page="news-page">News</button>
     <button class="tab-btn" data-page="video-page">Videos</button>
     <button class="tab-btn" data-page="connect-page">Connect</button>
@@ -1095,19 +1192,7 @@
     <div id="home-page" class="page active">
       <h1 class="home-title">The Virtual<br><em>Student Network</em></h1>
       <div class="home-rule"></div>
-      <div class="home-hero">
-        <img src="OSAP_PROTEST.jpg" alt="Students protest OSAP cuts at Queen's Park" />
-        <div class="home-hero-overlay"></div>
-      </div>
       <div class="home-box">Our student hub serves as a way for students to voice their concerns about social issues through our digital platform. We use our social network as a platform for students to connect, be informed, and tackle current student issues.</div>
-      <div class="home-topics">
-        <span class="home-topic-pill">Student Rights</span>
-        <span class="home-topic-pill">Campus Life</span>
-        <span class="home-topic-pill featured">Hands Off OSAP ✊</span>
-        <span class="home-topic-pill">Mental Health</span>
-        <span class="home-topic-pill">Housing</span>
-        <span class="home-topic-pill">Tuition</span>
-      </div>
     </div>
 
     <!-- ABOUT -->
@@ -1137,16 +1222,16 @@
       </div>
     </div>
 
-    <!-- PROJECT CONTENT — FORUM -->
-    <div id="projects-page" class="page">
+    <!-- OSAP (formerly Project Content / Forum) -->
+    <div id="osap-page" class="page">
       <div class="page-header">
         <div class="eyebrow">// community voices</div>
-        <h1>Project Content</h1>
+        <h1>OSAP</h1>
         <div class="rule"></div>
       </div>
       <div class="subtopic-banner">
-        <span class="st-label">Subtopic</span>
-        Hands Off OSAP — Share how OSAP cuts affect you as a student.
+        <span class="st-label">Topic</span>
+        OSAP — Share how OSAP cuts affect you as a student.
       </div>
       <div class="forum-topbar">
         <span class="forum-subtext">Add your voice to the conversation.</span>
@@ -1154,6 +1239,77 @@
       </div>
       <div id="forum-posts">
         <div class="forum-empty">No posts yet.<br>Be the first to share your story.</div>
+      </div>
+    </div>
+
+    <!-- COMING SOON PAGES -->
+    <div id="student-rights-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// topics</div>
+        <h1>Student Rights</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="coming-soon-wrap">
+        <div class="coming-soon-icon">🔒</div>
+        <div class="coming-soon-tag">Coming Soon</div>
+        <div class="coming-soon-title">More on the way.</div>
+        <div class="coming-soon-sub">Content for Student Rights is being prepared. Check back soon.</div>
+      </div>
+    </div>
+
+    <div id="campus-life-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// topics</div>
+        <h1>Campus Life</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="coming-soon-wrap">
+        <div class="coming-soon-icon">🏫</div>
+        <div class="coming-soon-tag">Coming Soon</div>
+        <div class="coming-soon-title">More on the way.</div>
+        <div class="coming-soon-sub">Content for Campus Life is being prepared. Check back soon.</div>
+      </div>
+    </div>
+
+    <div id="mental-health-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// topics</div>
+        <h1>Mental Health</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="coming-soon-wrap">
+        <div class="coming-soon-icon">💙</div>
+        <div class="coming-soon-tag">Coming Soon</div>
+        <div class="coming-soon-title">More on the way.</div>
+        <div class="coming-soon-sub">Content for Mental Health is being prepared. Check back soon.</div>
+      </div>
+    </div>
+
+    <div id="housing-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// topics</div>
+        <h1>Housing</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="coming-soon-wrap">
+        <div class="coming-soon-icon">🏠</div>
+        <div class="coming-soon-tag">Coming Soon</div>
+        <div class="coming-soon-title">More on the way.</div>
+        <div class="coming-soon-sub">Content for Housing is being prepared. Check back soon.</div>
+      </div>
+    </div>
+
+    <div id="tuition-page" class="page">
+      <div class="page-header">
+        <div class="eyebrow">// topics</div>
+        <h1>Tuition</h1>
+        <div class="rule"></div>
+      </div>
+      <div class="coming-soon-wrap">
+        <div class="coming-soon-icon">🎓</div>
+        <div class="coming-soon-tag">Coming Soon</div>
+        <div class="coming-soon-title">More on the way.</div>
+        <div class="coming-soon-sub">Content for Tuition is being prepared. Check back soon.</div>
       </div>
     </div>
 
@@ -1186,8 +1342,8 @@
         <div class="rule"></div>
       </div>
       <div class="subtopic-banner">
-        <span class="st-label">Subtopic</span>
-        Hands Off OSAP — Video coverage, testimonials, and campaign highlights.
+        <span class="st-label">Topic</span>
+        OSAP — Video coverage, testimonials, and campaign highlights.
       </div>
       <div class="video-section-label">Featured</div>
       <div class="video-grid">
@@ -1201,7 +1357,7 @@
           <div class="video-info">
             <div class="video-title">Video Title Goes Here</div>
             <div class="video-meta">
-              <span class="video-tag">Hands Off OSAP</span>
+              <span class="video-tag">OSAP</span>
               mm/dd/yyyy
             </div>
           </div>
@@ -1216,7 +1372,7 @@
           <div class="video-info">
             <div class="video-title">Video Title Goes Here</div>
             <div class="video-meta">
-              <span class="video-tag">Hands Off OSAP</span>
+              <span class="video-tag">OSAP</span>
               mm/dd/yyyy
             </div>
           </div>
@@ -1398,6 +1554,37 @@ const emailSendBtn = document.getElementById("email-send-btn");
 const emailSkipBtn = document.getElementById("email-skip-btn");
 const forumPosts   = document.getElementById("forum-posts");
 
+// Topics dropdown
+const topicsBtn  = document.getElementById("topics-btn");
+const topicsMenu = document.getElementById("topics-menu");
+
+topicsBtn.onclick = (e) => {
+  e.stopPropagation();
+  const isOpen = topicsMenu.classList.contains("open");
+  topicsMenu.classList.toggle("open", !isOpen);
+  topicsBtn.classList.toggle("open", !isOpen);
+};
+
+document.addEventListener("click", () => {
+  topicsMenu.classList.remove("open");
+  topicsBtn.classList.remove("open");
+});
+
+topicsMenu.addEventListener("click", (e) => e.stopPropagation());
+
+document.querySelectorAll(".topics-menu-item").forEach(item => {
+  item.onclick = () => {
+    const pageId = item.dataset.page;
+    navigateTo(pageId);
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".topics-menu-item").forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
+    topicsBtn.classList.add("active");
+    topicsMenu.classList.remove("open");
+    topicsBtn.classList.remove("open");
+  };
+});
+
 loginBtn.onclick = () => {
   authError.textContent = "";
   signInWithEmailAndPassword(auth, authEmailEl.value, authPassEl.value)
@@ -1455,16 +1642,23 @@ function start(user) {
   setupForum();
 }
 
+function navigateTo(pageId) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  const target = document.getElementById(pageId);
+  if (target) target.classList.add("active");
+  if (pageId === "chat-page") {
+    setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 50);
+  }
+}
+
 function setupNav() {
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.onclick = () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll(".topics-menu-item").forEach(i => i.classList.remove("active"));
+      topicsBtn.classList.remove("active");
       btn.classList.add("active");
-      document.getElementById(btn.dataset.page).classList.add("active");
-      if (btn.dataset.page === "chat-page") {
-        setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 50);
-      }
+      navigateTo(btn.dataset.page);
     };
   });
 }
