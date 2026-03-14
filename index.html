@@ -250,16 +250,13 @@
 
   .topics-menu {
     display: none;
-    position: absolute;
-    top: calc(100% + 1px);
-    left: 0;
+    position: fixed;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-top: none;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px;
     min-width: 200px;
-    z-index: 999;
-    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    z-index: 9998;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
     overflow: hidden;
     animation: dropDown 0.15s ease both;
   }
@@ -1222,7 +1219,7 @@
       </div>
     </div>
 
-    <!-- OSAP (formerly Project Content / Forum) -->
+    <!-- OSAP -->
     <div id="osap-page" class="page">
       <div class="page-header">
         <div class="eyebrow">// community voices</div>
@@ -1554,13 +1551,17 @@ const emailSendBtn = document.getElementById("email-send-btn");
 const emailSkipBtn = document.getElementById("email-skip-btn");
 const forumPosts   = document.getElementById("forum-posts");
 
-// Topics dropdown
 const topicsBtn  = document.getElementById("topics-btn");
 const topicsMenu = document.getElementById("topics-menu");
 
 topicsBtn.onclick = (e) => {
   e.stopPropagation();
   const isOpen = topicsMenu.classList.contains("open");
+  if (!isOpen) {
+    const rect = topicsBtn.getBoundingClientRect();
+    topicsMenu.style.top  = rect.bottom + 4 + "px";
+    topicsMenu.style.left = rect.left + "px";
+  }
   topicsMenu.classList.toggle("open", !isOpen);
   topicsBtn.classList.toggle("open", !isOpen);
 };
