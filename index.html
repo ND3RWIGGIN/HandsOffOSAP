@@ -1310,25 +1310,223 @@
       </div>
     </div>
 
-    <!-- NEWS -->
+  <!-- NEWS -->
     <div id="news-page" class="page">
       <div class="page-header">
         <div class="eyebrow">// updates</div>
         <h1>News</h1>
         <div class="rule"></div>
       </div>
-      <div class="placeholder-block">
-        <div class="placeholder-label">Latest — mm/dd/yyyy</div>
-        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers chicken fingers chicken fingers.</div>
+
+      <style>
+        .news-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          padding: 26px 28px;
+          margin-bottom: 16px;
+          position: relative;
+          overflow: hidden;
+          transition: border-color 0.2s;
+        }
+        .news-card:hover { border-color: var(--accent); }
+        .news-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; bottom: 0;
+          width: 3px;
+          background: linear-gradient(180deg, var(--accent), var(--accent2));
+        }
+        .news-tag-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 10px;
+          flex-wrap: wrap;
+        }
+        .news-tag {
+          font-family: var(--mono);
+          font-size: 0.6rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          padding: 3px 10px;
+          border-radius: 4px;
+          background: rgba(93,120,255,0.12);
+          border: 1px solid rgba(93,120,255,0.25);
+          color: var(--accent);
+        }
+        .news-tag.protest {
+          background: rgba(255,107,157,0.1);
+          border-color: rgba(255,107,157,0.3);
+          color: var(--accent2);
+        }
+        .news-tag.gov {
+          background: rgba(74,222,128,0.08);
+          border-color: rgba(74,222,128,0.25);
+          color: #4ade80;
+        }
+        .news-date {
+          font-family: var(--mono);
+          font-size: 0.65rem;
+          color: var(--muted);
+          margin-left: auto;
+        }
+        .news-headline {
+          font-size: 1.05rem;
+          font-weight: 700;
+          color: #fff;
+          margin-bottom: 10px;
+          line-height: 1.35;
+        }
+        .news-headline a {
+          color: inherit;
+          text-decoration: none;
+          transition: color 0.15s;
+        }
+        .news-headline a:hover { color: var(--accent); }
+        .news-summary {
+          font-size: 0.88rem;
+          color: var(--text);
+          line-height: 1.75;
+          opacity: 0.85;
+        }
+        .news-source {
+          font-family: var(--mono);
+          font-size: 0.65rem;
+          color: var(--muted);
+          margin-top: 12px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .news-source::before { content: "↗"; color: var(--accent2); }
+      </style>
+
+      <!-- Article 1 -->
+      <div class="news-card">
+        <div class="news-tag-row">
+          <span class="news-tag protest">Protest</span>
+          <span class="news-tag">OSAP</span>
+          <span class="news-date">2025</span>
+        </div>
+        <div class="news-headline">
+          <a href="https://www.ctvnews.ca/kitchener/article/cambridge-high-school-students-call-osap-changes-absolutely-outrageous/" target="_blank">
+            Students Call OSAP Changes "Absolutely Outrageous"
+          </a>
+        </div>
+        <div class="news-summary">
+          Students from Cambridge have spoken out against Ontario's OSAP reforms, warning that reduced grants and increased loan amounts will raise their tuition burden when they enter university. The group argues the policy changes will lead to greater student debt and threaten access to higher education — reflecting anxieties felt by prospective post-secondary students across the province.
+        </div>
+        <div class="news-source">CTV News Kitchener</div>
       </div>
-      <div class="placeholder-block">
-        <div class="placeholder-label">Archive — mm/dd/yyyy</div>
-        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
+
+      <!-- Article 2 -->
+      <div class="news-card">
+        <div class="news-tag-row">
+          <span class="news-tag protest">Protest</span>
+          <span class="news-tag">OSAP</span>
+          <span class="news-date">2025</span>
+        </div>
+        <div class="news-headline">
+          <a href="https://barrie360.com/barrie-hs-students-protest-osap-cuts/" target="_blank">
+            Barrie High School Students Protest OSAP Cuts
+          </a>
+        </div>
+        <div class="news-summary">
+          Around 200 students in Barrie organized a spontaneous demonstration outside MPP Andrea Khanjin's office to protest cuts to student aid. Participants expressed concern about the financial pressures they will face upon entering university under the new OSAP policies. The Barrie action is part of a growing province-wide movement of students pushing back against changes to Ontario's student aid system.
+        </div>
+        <div class="news-source">Barrie 360</div>
       </div>
-      <div class="placeholder-block">
-        <div class="placeholder-label">Archive — mm/dd/yyyy</div>
-        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers.</div>
+
+      <!-- Article 3 -->
+      <div class="news-card">
+        <div class="news-tag-row">
+          <span class="news-tag gov">Government</span>
+          <span class="news-tag">Funding</span>
+          <span class="news-date">2025</span>
+        </div>
+        <div class="news-headline">
+          <a href="https://news.ontario.ca/en/release/1007034/ontario-investing-64-billion-to-support-postsecondary-sectors-long-term-success-and-sustainability" target="_blank">
+            Ontario Invests $6.4 Billion in Post-Secondary Education
+          </a>
+        </div>
+        <div class="news-summary">
+          The Ontario government announced $6.4 billion in funding for universities and colleges to support long-term post-secondary growth and sustainability. Schools will also be permitted to raise tuition fees by up to 2% annually after a lengthy freeze. The announcement includes updates to the OSAP system that may change how students qualify for and receive financial aid going forward.
+        </div>
+        <div class="news-source">Ontario Newsroom</div>
       </div>
+
+      <!-- Article 4 -->
+      <div class="news-card">
+        <div class="news-tag-row">
+          <span class="news-tag protest">Protest</span>
+          <span class="news-tag">OSAP</span>
+          <span class="news-date">2025</span>
+        </div>
+        <div class="news-headline">
+          <a href="https://www.owensoundsuntimes.com/news/local-news/high-school-students-loudly-protest-osap-changes-in-owen-sound" target="_blank">
+            High School Students Protest OSAP Changes in Owen Sound
+          </a>
+        </div>
+        <div class="news-summary">
+          Students at Owen Sound high schools protested reductions to OSAP financial aid, arguing the cuts significantly increase the real cost of university and leave many unable to access post-secondary education. Their demonstration is part of a broader wave of student activism across Ontario demanding the government protect equitable access to higher education.
+        </div>
+        <div class="news-source">Owen Sound Sun Times</div>
+      </div>
+
+      <!-- Article 5 -->
+      <div class="news-card">
+        <div class="news-tag-row">
+          <span class="news-tag protest">Protest</span>
+          <span class="news-tag">OSAP</span>
+          <span class="news-date">2025</span>
+        </div>
+        <div class="news-headline">
+          <a href="https://windsorstar.com/news/local-news/were-angry-windsor-students-join-provincewide-protest-against-doug-fords-osap-cuts" target="_blank">
+            Windsor Students Join Province-Wide Protest Against OSAP Cuts
+          </a>
+        </div>
+        <div class="news-summary">
+          Windsor students joined province-wide demonstrations against Doug Ford's OSAP reforms, with many voicing anger over reduced grants and higher loan amounts. Protesters argued the changes make university tuition less affordable and will deepen student debt loads. The rally reflects a growing Ontario-wide student movement calling for equal access to higher education and a reversal of the cuts.
+        </div>
+        <div class="news-source">Windsor Star</div>
+      </div>
+
+      <!-- Article 6 -->
+      <div class="news-card">
+        <div class="news-tag-row">
+          <span class="news-tag">Mental Health</span>
+          <span class="news-date">Dec 21, 2025</span>
+        </div>
+        <div class="news-headline">
+          <a href="https://www.ctvnews.ca/canada/article/more-than-75-of-post-secondary-students-struggle-with-mental-health-heres-how-parents-can-help/" target="_blank">
+            More Than 75% of Post-Secondary Students Struggle with Mental Health
+          </a>
+        </div>
+        <div class="news-summary">
+          A growing number of post-secondary students across Canada are experiencing burnout and mental health challenges, particularly as semester pressures mount. CTV News spoke with family physician Dr. Vera Kohut about practical steps parents can take to help their children manage stress and mental health issues during their studies. The report highlights a deepening campus mental health crisis, where financial pressures — including rising tuition and student debt — are a key contributor to student anxiety.
+        </div>
+        <div class="news-source">CTV News Canada</div>
+      </div>
+
+      <!-- Article 7 -->
+      <div class="news-card">
+        <div class="news-tag-row">
+          <span class="news-tag gov">Government</span>
+          <span class="news-tag">Housing</span>
+          <span class="news-date">Nov 13, 2025</span>
+        </div>
+        <div class="news-headline">
+          <a href="https://news.ontario.ca/en/release/1006725/ontario-investing-83-million-to-support-affordable-student-housing-in-downtown-toronto" target="_blank">
+            Ontario Invests $83 Million to Support Affordable Student Housing in Downtown Toronto
+          </a>
+        </div>
+        <div class="news-summary">
+          The Ontario government announced an $83 million investment through the Building Ontario Fund to construct a new 21-storey student residence at Toronto Metropolitan University at 100 Bond Street. Developed with Cedar Podium Investment Management, the project will add nearly 1,400 new student beds — more than doubling TMU's current on-campus housing capacity — at rates well below average Toronto market rents. Pre-construction is expected to begin in late 2025 as part of a broader $200 million TMU housing expansion plan.
+        </div>
+        <div class="news-source">Ontario Newsroom</div>
+      </div>
+
     </div>
 
     <!-- VIDEOS -->
