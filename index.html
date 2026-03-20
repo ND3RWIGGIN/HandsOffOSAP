@@ -514,17 +514,7 @@
     position: relative;
   }
 
-  .home-box::before {
-    content: '\u201c';
-    position: absolute;
-    top: -18px;
-    left: 28px;
-    font-size: 4rem;
-    color: var(--accent2);
-    opacity: 0.4;
-    font-family: Georgia, serif;
-    line-height: 1;
-  }
+  .home-box::before { display: none; }
 
   .forum-topbar {
     display: flex;
@@ -1274,6 +1264,89 @@
           <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.7;">Students across Ontario — from high school to post-secondary — who want to make their voices heard.</div>
         </div>
       </div>
+
+      <!-- OUR TEAM -->
+      <div style="margin-top: 40px;">
+        <div style="font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+          Our Team
+          <span style="flex:1; height:1px; background: var(--border); display:inline-block;"></span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--accent), var(--accent2));"></div>
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width:44px; height:44px; border-radius:50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size:1rem; color:#fff; font-weight:700; flex-shrink:0;">E</div>
+              <div>
+                <div style="font-size:0.95rem; font-weight:700; color:var(--text);">Eesa</div>
+                <div style="font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.06em;">Founder &amp; Director</div>
+              </div>
+            </div>
+            <div style="font-size:0.85rem; color:var(--text); opacity:0.85; line-height:1.7;">Eesa founded the VSN with a vision to give Ontario students a unified digital voice. Studying Political Science at York University, he oversees the platform's direction, manages partnerships with student unions, and leads the OSAP advocacy campaign.</div>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--accent), var(--accent2));"></div>
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width:44px; height:44px; border-radius:50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size:1rem; color:#fff; font-weight:700; flex-shrink:0;">Y</div>
+              <div>
+                <div style="font-size:0.95rem; font-weight:700; color:var(--text);">Yitian</div>
+                <div style="font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.06em;">Mental Health Lead</div>
+              </div>
+            </div>
+            <div style="font-size:0.85rem; color:var(--text); opacity:0.85; line-height:1.7;">Yitian holds a Master's degree in Clinical Psychology and manages the VSN's Mental Health forum. She curates resources, moderates sensitive discussions with care, and works to ensure the platform remains a safe and supportive space for students struggling with academic pressure.</div>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--accent), var(--accent2));"></div>
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width:44px; height:44px; border-radius:50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size:1rem; color:#fff; font-weight:700; flex-shrink:0;">J</div>
+              <div>
+                <div style="font-size:0.95rem; font-weight:700; color:var(--text);">Jason</div>
+                <div style="font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.06em;">Tech Lead &amp; Developer</div>
+              </div>
+            </div>
+            <div style="font-size:0.85rem; color:var(--text); opacity:0.85; line-height:1.7;">Jason is a Computer Science student at TMU and the lead developer behind the VSN platform. He built and maintains the site's infrastructure, real-time chat, and Firebase integrations. Jason is passionate about using technology to amplify student voices across Ontario.</div>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--accent), var(--accent2));"></div>
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width:44px; height:44px; border-radius:50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size:1rem; color:#fff; font-weight:700; flex-shrink:0;">J</div>
+              <div>
+                <div style="font-size:0.95rem; font-weight:700; color:var(--text);">Joe</div>
+                <div style="font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.06em;">News &amp; Media Editor</div>
+              </div>
+            </div>
+            <div style="font-size:0.85rem; color:var(--text); opacity:0.85; line-height:1.7;">Joe is a Journalism student at UofT and heads the VSN's News section. He tracks legislation, protests, and policy changes affecting Ontario students, ensuring the platform stays current. Joe is committed to delivering accurate, unbiased coverage of issues that matter to the student community.</div>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--accent), var(--accent2));"></div>
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width:44px; height:44px; border-radius:50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size:1rem; color:#fff; font-weight:700; flex-shrink:0;">C</div>
+              <div>
+                <div style="font-size:0.95rem; font-weight:700; color:var(--text);">Clark</div>
+                <div style="font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.06em;">Student Rights Advisor</div>
+              </div>
+            </div>
+            <div style="font-size:0.85rem; color:var(--text); opacity:0.85; line-height:1.7;">Clark is completing his Law degree and serves as the VSN's student rights advisor. He researches university policies, compiles rights information for York, TMU, and UofT, and helps students understand their legal protections. Clark is a vocal advocate for equal access to post-secondary education.</div>
+          </div>
+
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden;">
+            <div style="position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--accent), var(--accent2));"></div>
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width:44px; height:44px; border-radius:50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size:1rem; color:#fff; font-weight:700; flex-shrink:0;">J</div>
+              <div>
+                <div style="font-size:0.95rem; font-weight:700; color:var(--text);">Jadon</div>
+                <div style="font-family:var(--mono); font-size:0.65rem; color:var(--accent); letter-spacing:0.06em;">Community &amp; Outreach Lead</div>
+              </div>
+            </div>
+            <div style="font-size:0.85rem; color:var(--text); opacity:0.85; line-height:1.7;">Jadon studies Sociology at York University and manages the VSN's community growth and campus outreach. He organizes events, builds relationships with student clubs and associations across Ontario, and ensures the platform reflects the diverse voices of the student population it serves.</div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
     <!-- OSAP -->
@@ -1868,7 +1941,7 @@
       <div class="contact-grid">
         <div class="contact-item" style="grid-column: span 2;">
           <div class="ci-label">Email</div>
-          <a href="/cdn-cgi/l/email-protection#483c202d3e213a3c3d29243b3c3d2c2d263c7f7e082f25292124662b2725" style="font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); text-decoration: none;"><span class="__cf_email__" data-cfemail="46322e23302f343233272a35323322232832717006212b272f2a6825292b">[email&#160;protected]</span></a>
+          <a href="mailto:thevirtualstudent76@gmail.com" style="font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); text-decoration: none;">thevirtualstudent76@gmail.com</a>
         </div>
         <div class="contact-item"><div class="ci-label">Location</div><div class="ci-val">N/A</div></div>
         <div class="contact-item">
@@ -2180,4 +2253,5 @@ function escapeHTML(str) {
 </script>
 
 </body>
+</html>
 </html>
