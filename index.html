@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Virtual Student Network</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
-
 <style>
   :root {
     --bg:        #10152e;
@@ -939,7 +938,7 @@
   #chat-wrap {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 56px - 48px - 56px);
+    height: calc(100vh - 56px - 48px - 28px);
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 16px;
@@ -1193,7 +1192,7 @@
 <!-- EMAIL MODAL -->
 <div class="modal-overlay" id="email-modal">
   <div class="email-modal-card">
-    <div class="fist">✊</div>
+    <div class="fist">&#x270A;</div>
     <h3>Make Your Voice Heard</h3>
     <p>Your story has been posted. Want to send it directly to the Premier of Ontario?</p>
     <div class="email-address">premier@ontario.ca</div>
@@ -1208,20 +1207,18 @@
 <!-- MAIN CONTENT -->
 <div id="main-content">
 
-  <!-- TOPBAR -->
   <div id="topbar">
     <div class="logo">The <span>Virtual Student</span> Network</div>
     <div id="online-pill">0 online</div>
-    <div id="user-badge">—</div>
+    <div id="user-badge">&#8212;</div>
   </div>
 
-  <!-- NAV TABS -->
   <div id="nav-tabs">
     <button class="tab-btn active" data-page="home-page">Home</button>
     <button class="tab-btn" data-page="about-page">About</button>
     <div class="topics-dropdown" id="topics-dropdown">
       <button class="topics-btn" id="topics-btn" type="button">
-        Topics <span class="chevron">▼</span>
+        Topics <span class="chevron">&#9660;</span>
       </button>
       <div class="topics-menu" id="topics-menu">
         <div class="topics-menu-item" data-page="osap-page"><span class="topic-dot"></span> OSAP</div>
@@ -1239,7 +1236,6 @@
     <button class="tab-btn" data-page="contact-page">Contact</button>
   </div>
 
-  <!-- PAGES -->
   <div id="pages-area">
 
     <!-- HOME -->
@@ -1261,18 +1257,9 @@
         <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
       </div>
       <div class="placeholder-grid">
-        <div class="placeholder-card">
-          <div class="placeholder-label">Background</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Skills</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Interests</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
+        <div class="placeholder-card"><div class="placeholder-label">Background</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card"><div class="placeholder-label">Skills</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card"><div class="placeholder-label">Interests</div><div class="placeholder-text">Chicken fingers</div></div>
       </div>
     </div>
 
@@ -1285,7 +1272,7 @@
       </div>
       <div class="subtopic-banner">
         <span class="st-label">Topic</span>
-        OSAP — Share how OSAP cuts affect you as a student.
+        OSAP &#8212; Share how OSAP cuts affect you as a student.
       </div>
       <div class="forum-topbar">
         <span class="forum-subtext">Add your voice to the conversation.</span>
@@ -1298,13 +1285,9 @@
 
     <!-- STUDENT RIGHTS -->
     <div id="student-rights-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// topics</div>
-        <h1>Student Rights</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// topics</div><h1>Student Rights</h1><div class="rule"></div></div>
       <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">🔒</div>
+        <div class="coming-soon-icon">&#x1F512;</div>
         <div class="coming-soon-tag">Coming Soon</div>
         <div class="coming-soon-title">More on the way.</div>
         <div class="coming-soon-sub">Content for Student Rights is being prepared. Check back soon.</div>
@@ -1313,13 +1296,9 @@
 
     <!-- CAMPUS LIFE -->
     <div id="campus-life-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// topics</div>
-        <h1>Campus Life</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// topics</div><h1>Campus Life</h1><div class="rule"></div></div>
       <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">🏫</div>
+        <div class="coming-soon-icon">&#x1F3EB;</div>
         <div class="coming-soon-tag">Coming Soon</div>
         <div class="coming-soon-title">More on the way.</div>
         <div class="coming-soon-sub">Content for Campus Life is being prepared. Check back soon.</div>
@@ -1328,13 +1307,9 @@
 
     <!-- MENTAL HEALTH -->
     <div id="mental-health-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// topics</div>
-        <h1>Mental Health</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// topics</div><h1>Mental Health</h1><div class="rule"></div></div>
       <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">💙</div>
+        <div class="coming-soon-icon">&#x1F499;</div>
         <div class="coming-soon-tag">Coming Soon</div>
         <div class="coming-soon-title">More on the way.</div>
         <div class="coming-soon-sub">Content for Mental Health is being prepared. Check back soon.</div>
@@ -1343,13 +1318,9 @@
 
     <!-- HOUSING -->
     <div id="housing-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// topics</div>
-        <h1>Housing</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// topics</div><h1>Housing</h1><div class="rule"></div></div>
       <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">🏠</div>
+        <div class="coming-soon-icon">&#x1F3E0;</div>
         <div class="coming-soon-tag">Coming Soon</div>
         <div class="coming-soon-title">More on the way.</div>
         <div class="coming-soon-sub">Content for Housing is being prepared. Check back soon.</div>
@@ -1358,13 +1329,9 @@
 
     <!-- TUITION -->
     <div id="tuition-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// topics</div>
-        <h1>Tuition</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// topics</div><h1>Tuition</h1><div class="rule"></div></div>
       <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">🎓</div>
+        <div class="coming-soon-icon">&#x1F393;</div>
         <div class="coming-soon-tag">Coming Soon</div>
         <div class="coming-soon-title">More on the way.</div>
         <div class="coming-soon-sub">Content for Tuition is being prepared. Check back soon.</div>
@@ -1373,221 +1340,91 @@
 
     <!-- NEWS -->
     <div id="news-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// updates</div>
-        <h1>News</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// updates</div><h1>News</h1><div class="rule"></div></div>
 
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag protest">Protest</span>
-          <span class="news-tag">OSAP</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://www.ctvnews.ca/kitchener/article/cambridge-high-school-students-call-osap-changes-absolutely-outrageous/" target="_blank">Students Call OSAP Changes "Absolutely Outrageous"</a>
-        </div>
+        <div class="news-tag-row"><span class="news-tag protest">Protest</span><span class="news-tag">OSAP</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://www.ctvnews.ca/kitchener/article/cambridge-high-school-students-call-osap-changes-absolutely-outrageous/" target="_blank">Students Call OSAP Changes "Absolutely Outrageous"</a></div>
         <div class="news-summary">Students from Cambridge have spoken out against Ontario's OSAP reforms, warning that reduced grants and increased loan amounts will raise their tuition burden when they enter university. The group argues the policy changes will lead to greater student debt and threaten access to higher education — reflecting anxieties felt by prospective post-secondary students across the province.</div>
         <div class="news-source">CTV News Kitchener</div>
       </div>
 
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag protest">Protest</span>
-          <span class="news-tag">OSAP</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://barrie360.com/barrie-hs-students-protest-osap-cuts/" target="_blank">Barrie High School Students Protest OSAP Cuts</a>
-        </div>
+        <div class="news-tag-row"><span class="news-tag protest">Protest</span><span class="news-tag">OSAP</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://barrie360.com/barrie-hs-students-protest-osap-cuts/" target="_blank">Barrie High School Students Protest OSAP Cuts</a></div>
         <div class="news-summary">Around 200 students in Barrie organized a spontaneous demonstration outside MPP Andrea Khanjin's office to protest cuts to student aid. Participants expressed concern about the financial pressures they will face upon entering university under the new OSAP policies. The Barrie action is part of a growing province-wide movement of students pushing back against changes to Ontario's student aid system.</div>
         <div class="news-source">Barrie 360</div>
       </div>
 
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag gov">Government</span>
-          <span class="news-tag">Funding</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://news.ontario.ca/en/release/1007034/ontario-investing-64-billion-to-support-postsecondary-sectors-long-term-success-and-sustainability" target="_blank">Ontario Invests $6.4 Billion in Post-Secondary Education</a>
-        </div>
+        <div class="news-tag-row"><span class="news-tag gov">Government</span><span class="news-tag">Funding</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://news.ontario.ca/en/release/1007034/ontario-investing-64-billion-to-support-postsecondary-sectors-long-term-success-and-sustainability" target="_blank">Ontario Invests $6.4 Billion in Post-Secondary Education</a></div>
         <div class="news-summary">The Ontario government announced $6.4 billion in funding for universities and colleges to support long-term post-secondary growth and sustainability. Schools will also be permitted to raise tuition fees by up to 2% annually after a lengthy freeze. The announcement includes updates to the OSAP system that may change how students qualify for and receive financial aid going forward.</div>
         <div class="news-source">Ontario Newsroom</div>
       </div>
 
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag protest">Protest</span>
-          <span class="news-tag">OSAP</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://www.owensoundsuntimes.com/news/local-news/high-school-students-loudly-protest-osap-changes-in-owen-sound" target="_blank">High School Students Protest OSAP Changes in Owen Sound</a>
-        </div>
+        <div class="news-tag-row"><span class="news-tag protest">Protest</span><span class="news-tag">OSAP</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://www.owensoundsuntimes.com/news/local-news/high-school-students-loudly-protest-osap-changes-in-owen-sound" target="_blank">High School Students Protest OSAP Changes in Owen Sound</a></div>
         <div class="news-summary">Students at Owen Sound high schools protested reductions to OSAP financial aid, arguing the cuts significantly increase the real cost of university and leave many unable to access post-secondary education. Their demonstration is part of a broader wave of student activism across Ontario demanding the government protect equitable access to higher education.</div>
         <div class="news-source">Owen Sound Sun Times</div>
       </div>
 
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag protest">Protest</span>
-          <span class="news-tag">OSAP</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://windsorstar.com/news/local-news/were-angry-windsor-students-join-provincewide-protest-against-doug-fords-osap-cuts" target="_blank">Windsor Students Join Province-Wide Protest Against OSAP Cuts</a>
-        </div>
+        <div class="news-tag-row"><span class="news-tag protest">Protest</span><span class="news-tag">OSAP</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://windsorstar.com/news/local-news/were-angry-windsor-students-join-provincewide-protest-against-doug-fords-osap-cuts" target="_blank">Windsor Students Join Province-Wide Protest Against OSAP Cuts</a></div>
         <div class="news-summary">Windsor students joined province-wide demonstrations against Doug Ford's OSAP reforms, with many voicing anger over reduced grants and higher loan amounts. Protesters argued the changes make university tuition less affordable and will deepen student debt loads. The rally reflects a growing Ontario-wide student movement calling for equal access to higher education and a reversal of the cuts.</div>
         <div class="news-source">Windsor Star</div>
       </div>
 
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag">Mental Health</span>
-          <span class="news-date">Dec 21, 2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://www.ctvnews.ca/canada/article/more-than-75-of-post-secondary-students-struggle-with-mental-health-heres-how-parents-can-help/" target="_blank">More Than 75% of Post-Secondary Students Struggle with Mental Health</a>
-        </div>
-        <div class="news-summary">A growing number of post-secondary students across Canada are experiencing burnout and mental health challenges, particularly as semester pressures mount. CTV News spoke with family physician Dr. Vera Kohut about practical steps parents can take to help their children manage stress and mental health issues during their studies. The report highlights a deepening campus mental health crisis, where financial pressures — including rising tuition and student debt — are a key contributor to student anxiety.</div>
+        <div class="news-tag-row"><span class="news-tag">Mental Health</span><span class="news-date">Dec 21, 2025</span></div>
+        <div class="news-headline"><a href="https://www.ctvnews.ca/canada/article/more-than-75-of-post-secondary-students-struggle-with-mental-health-heres-how-parents-can-help/" target="_blank">More Than 75% of Post-Secondary Students Struggle with Mental Health</a></div>
+        <div class="news-summary">A growing number of post-secondary students across Canada are experiencing burnout and mental health challenges, particularly as semester pressures mount. CTV News spoke with family physician Dr. Vera Kohut about practical steps parents can take to help their children manage stress and mental health issues during their studies. The report highlights a deepening campus mental health crisis, where financial pressures are a key contributor to student anxiety.</div>
         <div class="news-source">CTV News Canada</div>
       </div>
 
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag gov">Government</span>
-          <span class="news-tag">Housing</span>
-          <span class="news-date">Nov 13, 2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://news.ontario.ca/en/release/1006725/ontario-investing-83-million-to-support-affordable-student-housing-in-downtown-toronto" target="_blank">Ontario Invests $83 Million to Support Affordable Student Housing in Downtown Toronto</a>
-        </div>
-        <div class="news-summary">The Ontario government announced an $83 million investment through the Building Ontario Fund to construct a new 21-storey student residence at Toronto Metropolitan University at 100 Bond Street. The project will add nearly 1,400 new student beds — more than doubling TMU's current on-campus housing capacity — at rates well below average Toronto market rents. Pre-construction is expected to begin in late 2025 as part of a broader $200 million TMU housing expansion plan.</div>
+        <div class="news-tag-row"><span class="news-tag gov">Government</span><span class="news-tag">Housing</span><span class="news-date">Nov 13, 2025</span></div>
+        <div class="news-headline"><a href="https://news.ontario.ca/en/release/1006725/ontario-investing-83-million-to-support-affordable-student-housing-in-downtown-toronto" target="_blank">Ontario Invests $83 Million to Support Affordable Student Housing in Downtown Toronto</a></div>
+        <div class="news-summary">The Ontario government announced an $83 million investment through the Building Ontario Fund to construct a new 21-storey student residence at Toronto Metropolitan University at 100 Bond Street. The project will add nearly 1,400 new student beds at rates well below average Toronto market rents. Pre-construction is expected to begin in late 2025 as part of a broader $200 million TMU housing expansion plan.</div>
         <div class="news-source">Ontario Newsroom</div>
       </div>
-
     </div>
 
     <!-- VIDEOS -->
     <div id="video-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// media</div>
-        <h1>Videos</h1>
-        <div class="rule"></div>
-      </div>
-      <div class="subtopic-banner">
-        <span class="st-label">Topic</span>
-        OSAP — Video coverage, testimonials, and campaign highlights.
-      </div>
+      <div class="page-header"><div class="eyebrow">// media</div><h1>Videos</h1><div class="rule"></div></div>
+      <div class="subtopic-banner"><span class="st-label">Topic</span> OSAP &#8212; Video coverage, testimonials, and campaign highlights.</div>
       <div class="video-section-label">Featured</div>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">OSAP</span>mm/dd/yyyy</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">OSAP</span>mm/dd/yyyy</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div>
-          </div>
-        </div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">OSAP</span>mm/dd/yyyy</div></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">OSAP</span>mm/dd/yyyy</div></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div></div></div>
       </div>
       <div class="video-section-label">All Videos</div>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div>
-          </div>
-        </div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div></div></div>
       </div>
     </div>
 
     <!-- CONNECT -->
     <div id="connect-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// network</div>
-        <h1>Connect</h1>
-        <div class="rule"></div>
-      </div>
-      <div class="placeholder-block">
-        <div class="placeholder-label">Introduction</div>
-        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// network</div><h1>Connect</h1><div class="rule"></div></div>
+      <div class="placeholder-block"><div class="placeholder-label">Introduction</div><div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div></div>
       <div class="placeholder-grid">
-        <div class="placeholder-card">
-          <div class="placeholder-label">Platform 01</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Platform 02</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Platform 03</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Platform 04</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
+        <div class="placeholder-card"><div class="placeholder-label">Platform 01</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card"><div class="placeholder-label">Platform 02</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card"><div class="placeholder-label">Platform 03</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card"><div class="placeholder-label">Platform 04</div><div class="placeholder-text">Chicken fingers</div></div>
       </div>
     </div>
 
     <!-- VIRTUAL CHAT -->
     <div id="chat-page" class="page">
       <div id="chat-wrap">
-        <div id="chat-header">
-          <div class="dot"></div>
-          virtual chat — live
-        </div>
+        <div id="chat-header"><div class="dot"></div>virtual chat &#8212; live</div>
         <div id="chat-box"></div>
         <div id="chat-footer">
           <input id="chat-input" placeholder="Send a message..." />
@@ -1598,26 +1435,17 @@
 
     <!-- CONTACT -->
     <div id="contact-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// reach out</div>
-        <h1>Contact</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// reach out</div><h1>Contact</h1><div class="rule"></div></div>
       <div class="placeholder-block">
         <div class="placeholder-label">Get In Touch</div>
-        <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.8;">
-          Get in touch with the VSN! Any feedback, news, or improvements, feel free to reach out and let us know how we can improve the VSN for all students.
-        </div>
+        <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.8;">Get in touch with the VSN! Any feedback, news, or improvements, feel free to reach out and let us know how we can improve the VSN for all students.</div>
       </div>
       <div class="contact-grid">
         <div class="contact-item" style="grid-column: span 2;">
           <div class="ci-label">Email</div>
           <a href="mailto:thevirtualstudent76@gmail.com" style="font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); text-decoration: none;">thevirtualstudent76@gmail.com</a>
         </div>
-        <div class="contact-item">
-          <div class="ci-label">Location</div>
-          <div class="ci-val">N/A</div>
-        </div>
+        <div class="contact-item"><div class="ci-label">Location</div><div class="ci-val">N/A</div></div>
         <div class="contact-item">
           <div class="ci-label">Phone</div>
           <a href="tel:4379071596" style="font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); text-decoration: none;">437-907-1596</a>
@@ -1628,98 +1456,43 @@
   </div>
 </div>
 
-<!-- FIREBASE + LOGIC -->
 <script type="module">
-window.addEventListener("DOMContentLoaded", () => {
-import { initializeApp }
-  from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import { getDatabase, ref, set, push, onValue, onDisconnect, remove }
-  from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged }
-  from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, set, push, onValue, onDisconnect, remove } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey:            "AIzaSyB1uImeDQJWGBOsq-i1lrcKjNY3SlqyuIA",
-  authDomain:        "handsoffosap.firebaseapp.com",
-  databaseURL:       "https://handsoffosap-default-rtdb.firebaseio.com",
-  projectId:         "handsoffosap",
-  storageBucket:     "handsoffosap.firebasestorage.app",
+  apiKey: "AIzaSyB1uImeDQJWGBOsq-i1lrcKjNY3SlqyuIA",
+  authDomain: "handsoffosap.firebaseapp.com",
+  databaseURL: "https://handsoffosap-default-rtdb.firebaseio.com",
+  projectId: "handsoffosap",
+  storageBucket: "handsoffosap.firebasestorage.app",
   messagingSenderId: "563537607953",
-  appId:             "1:563537607953:web:149eeeb63ab2266cb9a0b0",
-  measurementId:     "G-TWJGXKV7SD"
+  appId: "1:563537607953:web:149eeeb63ab2266cb9a0b0",
+  measurementId: "G-TWJGXKV7SD"
 };
 
 const app  = initializeApp(firebaseConfig);
 const db   = getDatabase(app);
 const auth = getAuth(app);
 
-const authScreen   = document.getElementById("auth-screen");
-const mainContent  = document.getElementById("main-content");
-const authEmailEl  = document.getElementById("auth-email");
-const authPassEl   = document.getElementById("auth-password");
-const loginBtn     = document.getElementById("login-btn");
-const signupBtn    = document.getElementById("signup-btn");
-const authError    = document.getElementById("auth-error");
-const onlinePill   = document.getElementById("online-pill");
-const userBadge    = document.getElementById("user-badge");
-const chatBox      = document.getElementById("chat-box");
-const chatInput    = document.getElementById("chat-input");
-const sendBtn      = document.getElementById("send-btn");
-const postModal    = document.getElementById("post-modal");
-const emailModal   = document.getElementById("email-modal");
-const openPostBtn  = document.getElementById("open-post-modal");
-const modalCancel  = document.getElementById("modal-cancel");
-const modalPostBtn = document.getElementById("modal-post-btn");
-const postTextarea = document.getElementById("post-textarea");
-const emailSendBtn = document.getElementById("email-send-btn");
-const emailSkipBtn = document.getElementById("email-skip-btn");
-const forumPosts   = document.getElementById("forum-posts");
+let currentEmail = "";
 
-const topicsBtn  = document.getElementById("topics-btn");
-const topicsMenu = document.getElementById("topics-menu");
-
-topicsBtn.onclick = (e) => {
-  e.stopPropagation();
-  const isOpen = topicsMenu.classList.contains("open");
-  if (!isOpen) {
-    const rect = topicsBtn.getBoundingClientRect();
-    topicsMenu.style.top  = rect.bottom + 4 + "px";
-    topicsMenu.style.left = rect.left + "px";
-  }
-  topicsMenu.classList.toggle("open", !isOpen);
-  topicsBtn.classList.toggle("open", !isOpen);
+// AUTH
+document.getElementById("login-btn").onclick = () => {
+  document.getElementById("auth-error").textContent = "";
+  signInWithEmailAndPassword(auth,
+    document.getElementById("auth-email").value.trim(),
+    document.getElementById("auth-password").value
+  ).catch(e => { document.getElementById("auth-error").textContent = friendlyError(e.code); });
 };
 
-document.addEventListener("click", () => {
-  topicsMenu.classList.remove("open");
-  topicsBtn.classList.remove("open");
-});
-
-topicsMenu.addEventListener("click", (e) => e.stopPropagation());
-
-document.querySelectorAll(".topics-menu-item").forEach(item => {
-  item.onclick = () => {
-    const pageId = item.dataset.page;
-    navigateTo(pageId);
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".topics-menu-item").forEach(i => i.classList.remove("active"));
-    item.classList.add("active");
-    topicsBtn.classList.add("active");
-    topicsMenu.classList.remove("open");
-    topicsBtn.classList.remove("open");
-  };
-});
-
-loginBtn.onclick = () => {
-  authError.textContent = "";
-  signInWithEmailAndPassword(auth, authEmailEl.value, authPassEl.value)
-    .catch(e => authError.textContent = friendlyError(e.code));
-};
-
-signupBtn.onclick = () => {
-  authError.textContent = "";
-  createUserWithEmailAndPassword(auth, authEmailEl.value, authPassEl.value)
-    .catch(e => authError.textContent = friendlyError(e.code));
+document.getElementById("signup-btn").onclick = () => {
+  document.getElementById("auth-error").textContent = "";
+  createUserWithEmailAndPassword(auth,
+    document.getElementById("auth-email").value.trim(),
+    document.getElementById("auth-password").value
+  ).catch(e => { document.getElementById("auth-error").textContent = friendlyError(e.code); });
 };
 
 function friendlyError(code) {
@@ -1729,54 +1502,84 @@ function friendlyError(code) {
     "auth/wrong-password":       "Incorrect password.",
     "auth/email-already-in-use": "That email is already registered.",
     "auth/weak-password":        "Password must be at least 6 characters.",
-    "auth/too-many-requests":    "Too many attempts. Try again later.",
+    "auth/too-many-requests":    "Too many attempts. Try again later."
   };
   return map[code] || "Something went wrong. Try again.";
 }
 
 onAuthStateChanged(auth, user => {
   if (user) {
-    authScreen.style.display  = "none";
-    mainContent.style.display = "flex";
-    start(user);
+    document.getElementById("auth-screen").style.display = "none";
+    document.getElementById("main-content").style.display = "flex";
+    currentEmail = user.email;
+    document.getElementById("user-badge").textContent = user.email;
+    setupPresence(user);
+    setupNav();
+    setupChat(user.email);
+    setupForum();
   } else {
-    authScreen.style.display  = "flex";
-    mainContent.style.display = "none";
+    document.getElementById("auth-screen").style.display = "flex";
+    document.getElementById("main-content").style.display = "none";
+    currentEmail = "";
   }
 });
 
-let started      = false;
-let currentEmail = "";
-
-function start(user) {
-  if (started) return;
-  started = true;
-  currentEmail = user.email;
-  userBadge.textContent = user.email;
-
+// PRESENCE
+function setupPresence(user) {
   const pRef = ref(db, "presence/" + user.uid);
   set(pRef, user.email);
   onDisconnect(pRef).remove();
   onValue(ref(db, "presence"), snap => {
     const count = Object.keys(snap.val() || {}).length;
-    onlinePill.textContent = count + " online";
+    document.getElementById("online-pill").textContent = count + " online";
   });
-
-  setupNav();
-  setupChat(user.email);
-  setupForum();
 }
 
+// NAV
 function navigateTo(pageId) {
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   const target = document.getElementById(pageId);
   if (target) target.classList.add("active");
   if (pageId === "chat-page") {
-    setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 50);
+    setTimeout(() => { document.getElementById("chat-box").scrollTop = 999999; }, 50);
   }
 }
 
 function setupNav() {
+  const topicsBtn  = document.getElementById("topics-btn");
+  const topicsMenu = document.getElementById("topics-menu");
+
+  topicsBtn.onclick = e => {
+    e.stopPropagation();
+    const isOpen = topicsMenu.classList.contains("open");
+    if (!isOpen) {
+      const rect = topicsBtn.getBoundingClientRect();
+      topicsMenu.style.top  = rect.bottom + 4 + "px";
+      topicsMenu.style.left = rect.left + "px";
+    }
+    topicsMenu.classList.toggle("open", !isOpen);
+    topicsBtn.classList.toggle("open", !isOpen);
+  };
+
+  document.addEventListener("click", () => {
+    topicsMenu.classList.remove("open");
+    topicsBtn.classList.remove("open");
+  });
+
+  topicsMenu.addEventListener("click", e => e.stopPropagation());
+
+  document.querySelectorAll(".topics-menu-item").forEach(item => {
+    item.onclick = () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".topics-menu-item").forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+      topicsBtn.classList.add("active");
+      topicsMenu.classList.remove("open");
+      topicsBtn.classList.remove("open");
+      navigateTo(item.dataset.page);
+    };
+  });
+
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.onclick = () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
@@ -1788,13 +1591,12 @@ function setupNav() {
   });
 }
 
+// CHAT
 function setupChat(email) {
-  const chatRef = ref(db, "chat");
-
-  sendBtn.onclick = sendMessage;
-  chatInput.addEventListener("keypress", e => {
-    if (e.key === "Enter") sendMessage();
-  });
+  const chatRef   = ref(db, "chat");
+  const chatBox   = document.getElementById("chat-box");
+  const chatInput = document.getElementById("chat-input");
+  const sendBtn   = document.getElementById("send-btn");
 
   function sendMessage() {
     const txt = chatInput.value.trim();
@@ -1803,28 +1605,27 @@ function setupChat(email) {
     chatInput.value = "";
   }
 
+  sendBtn.onclick = sendMessage;
+  chatInput.addEventListener("keypress", e => { if (e.key === "Enter") sendMessage(); });
+
   onValue(chatRef, snap => {
     chatBox.innerHTML = "";
     snap.forEach(m => {
       const v      = m.val();
       const isMine = v.name === email;
-
       const wrap   = document.createElement("div");
       wrap.className = "msg " + (isMine ? "mine" : "other");
-
       const meta   = document.createElement("div");
       meta.className = "msg-meta";
-      const hhmm   = new Date(v.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
       const espan  = document.createElement("span");
       espan.className   = "msg-email";
       espan.textContent = v.name;
+      const hhmm = new Date(v.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
       meta.appendChild(espan);
-      meta.appendChild(document.createTextNode(" · " + hhmm));
-
+      meta.appendChild(document.createTextNode(" \u00b7 " + hhmm));
       const bubble = document.createElement("div");
       bubble.className   = "msg-bubble";
       bubble.textContent = v.text;
-
       wrap.appendChild(meta);
       wrap.appendChild(bubble);
       chatBox.appendChild(wrap);
@@ -1833,42 +1634,55 @@ function setupChat(email) {
   });
 }
 
+// FORUM
 function setupForum() {
+  const postModal    = document.getElementById("post-modal");
+  const emailModal   = document.getElementById("email-modal");
+  const openPostBtn  = document.getElementById("open-post-modal");
+  const modalCancel  = document.getElementById("modal-cancel");
+  const modalPostBtn = document.getElementById("modal-post-btn");
+  const postTextarea = document.getElementById("post-textarea");
+  const emailSendBtn = document.getElementById("email-send-btn");
+  const emailSkipBtn = document.getElementById("email-skip-btn");
+
   openPostBtn.onclick = () => {
     postTextarea.value = "";
     postModal.classList.add("open");
   };
 
   modalCancel.onclick = () => postModal.classList.remove("open");
-  postModal.addEventListener("click", e => {
-    if (e.target === postModal) postModal.classList.remove("open");
-  });
+  postModal.onclick   = e => { if (e.target === postModal) postModal.classList.remove("open"); };
 
   modalPostBtn.onclick = async () => {
     const text = postTextarea.value.trim();
     if (!text) return;
-
     modalPostBtn.textContent = "Posting...";
     modalPostBtn.disabled    = true;
-
     try {
       await push(ref(db, "forum_posts"), {
         author: currentEmail,
-        text,
-        time: Date.now()
+        text:   text,
+        time:   Date.now()
       });
       postModal.classList.remove("open");
-      showEmailModal(text);
+      const subject = encodeURIComponent("How OSAP Cuts Affect Me");
+      const body    = encodeURIComponent(text + "\n\n\u2014 Sent via The Virtual Student Network");
+      emailSendBtn.href = "mailto:premier@ontario.ca?subject=" + subject + "&body=" + body;
+      emailModal.classList.add("open");
     } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Please try again.");
+      console.error("Post error:", err);
+      alert("Failed to post. Check the console for details.");
     } finally {
       modalPostBtn.textContent = "Post";
       modalPostBtn.disabled    = false;
     }
   };
 
+  emailSkipBtn.onclick = () => emailModal.classList.remove("open");
+  emailModal.onclick   = e => { if (e.target === emailModal) emailModal.classList.remove("open"); };
+
   onValue(ref(db, "forum_posts"), snap => {
+    const forumPosts = document.getElementById("forum-posts");
     forumPosts.innerHTML = "";
     if (!snap.exists()) {
       forumPosts.innerHTML = '<div class="forum-empty">No posts yet.<br>Be the first to share your story.</div>';
@@ -1877,31 +1691,17 @@ function setupForum() {
     const posts = [];
     snap.forEach(child => posts.unshift({ id: child.key, ...child.val() }));
     posts.forEach(post => forumPosts.appendChild(buildPost(post)));
+  }, err => {
+    console.error("Forum read error:", err);
   });
-
-  emailSkipBtn.onclick = () => emailModal.classList.remove("open");
-  emailModal.addEventListener("click", e => {
-    if (e.target === emailModal) emailModal.classList.remove("open");
-  });
-}
-
-function showEmailModal(postText) {
-  const subject = encodeURIComponent("How OSAP Cuts Affect Me");
-  const body    = encodeURIComponent(postText + "\n\n— Sent via The Virtual Student Network");
-  emailSendBtn.href = `mailto:premier@ontario.ca?subject=${subject}&body=${body}`;
-  emailModal.classList.add("open");
 }
 
 function buildPost(post) {
-  const el      = document.createElement("div");
-  el.className  = "forum-post";
-  const initial = post.author ? post.author[0].toUpperCase() : "?";
-  const time    = new Date(post.time).toLocaleString([], {
-    month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"
-  });
-
+  const el       = document.createElement("div");
+  el.className   = "forum-post";
+  const initial  = post.author ? post.author[0].toUpperCase() : "?";
+  const time     = new Date(post.time).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
   const canDelete = currentEmail === post.author || currentEmail === "eesanana@gmail.com";
-
   el.innerHTML = `
     <div class="post-meta">
       <div class="post-avatar">${initial}</div>
@@ -1909,18 +1709,16 @@ function buildPost(post) {
         <div class="post-author">${post.author}</div>
         <div class="post-time">${time}</div>
       </div>
-      ${canDelete ? `<button class="delete-post-btn" data-id="${post.id}">✕ Delete</button>` : ""}
+      ${canDelete ? '<button class="delete-post-btn" data-id="' + post.id + '">\u2715 Delete</button>' : ""}
     </div>
     <div class="post-body">${escapeHTML(post.text)}</div>
   `;
-
   if (canDelete) {
     el.querySelector(".delete-post-btn").onclick = async () => {
       if (!confirm("Delete this post?")) return;
       await remove(ref(db, "forum_posts/" + post.id));
     };
   }
-
   return el;
 }
 
@@ -1931,8 +1729,6 @@ function escapeHTML(str) {
     .replace(/>/g,  "&gt;")
     .replace(/\n/g, "<br>");
 }
-});
 </script>
-
 </body>
 </html>
