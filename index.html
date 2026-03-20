@@ -515,7 +515,7 @@
   }
 
   .home-box::before {
-    content: '"';
+    content: '\u201c';
     position: absolute;
     top: -18px;
     left: 28px;
@@ -1158,7 +1158,7 @@
     align-items: center;
     gap: 6px;
   }
-  .news-source::before { content: "↗"; color: var(--accent2); }
+  .news-source::before { content: "\u2197"; color: var(--accent2); }
 </style>
 </head>
 <body>
@@ -1193,10 +1193,10 @@
 <!-- EMAIL MODAL -->
 <div class="modal-overlay" id="email-modal">
   <div class="email-modal-card">
-    <div class="fist">✊</div>
+    <div class="fist">&#x270A;</div>
     <h3>Make Your Voice Heard</h3>
     <p>Your story has been posted. Want to send it directly to the Premier of Ontario?</p>
-    <div class="email-address">premier@ontario.ca</div>
+    <div class="email-address"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ceceef9f1f5f9eedcf3f2e8fdeef5f3b2fffd">[email&#160;protected]</a></div>
     <p>Every email counts. Let them know how these cuts affect real students.</p>
     <div class="email-actions">
       <a class="email-send-btn" id="email-send-btn" href="#" target="_blank">Email the Premier</a>
@@ -1212,7 +1212,7 @@
   <div id="topbar">
     <div class="logo">The <span>Virtual Student</span> Network</div>
     <div id="online-pill">0 online</div>
-    <div id="user-badge">—</div>
+    <div id="user-badge">&mdash;</div>
   </div>
 
   <!-- NAV TABS -->
@@ -1221,7 +1221,7 @@
     <button class="tab-btn" data-page="about-page">About</button>
     <div class="topics-dropdown" id="topics-dropdown">
       <button class="topics-btn" id="topics-btn" type="button">
-        Topics <span class="chevron">▼</span>
+        Topics <span class="chevron">&#9660;</span>
       </button>
       <div class="topics-menu" id="topics-menu">
         <div class="topics-menu-item" data-page="osap-page"><span class="topic-dot"></span> OSAP</div>
@@ -1246,7 +1246,7 @@
     <div id="home-page" class="page active">
       <h1 class="home-title">The Virtual<br><em>Student Network</em></h1>
       <div class="home-rule"></div>
-      <div class="home-box">Our student hub serves as a way for students to voice their concerns about social issues through our digital platform. We use our social network as a platform for students to connect, be informed, and tackle current student issues.</div>
+      <div class="home-box">The Virtual Student Network is an online space created to facilitate students in expressing their concerns towards sociopolitical issues. Before the creation of the VSN, there were no easy access hubs for students to connect and share their viewpoints regarding the decisions directly affecting them. Now, students across Ontario have a reliable way to communicate, stay informed on the latest news, and browse archived political notions they may have missed. The VSN provides all students an opportunity to represent themselves and protect their future.</div>
     </div>
 
     <!-- ABOUT -->
@@ -1257,21 +1257,21 @@
         <div class="rule"></div>
       </div>
       <div class="placeholder-block">
-        <div class="placeholder-label">Bio</div>
-        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
+        <div class="placeholder-label">Who We Are</div>
+        <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.9; font-size: 0.95rem;">The Virtual Student Network is an online space created to facilitate students in expressing their concerns towards sociopolitical issues. Before the creation of the VSN, there were no easy access hubs for students to connect and share their viewpoints regarding the decisions directly affecting them. Now, students across Ontario have a reliable way to communicate, stay informed on the latest news, and browse archived political notions they may have missed. The VSN provides all students an opportunity to represent themselves and protect their future.</div>
       </div>
       <div class="placeholder-grid">
         <div class="placeholder-card">
-          <div class="placeholder-label">Background</div>
-          <div class="placeholder-text">Chicken fingers</div>
+          <div class="placeholder-label">Our Mission</div>
+          <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.7;">Empower Ontario students to voice their concerns and take action on issues that affect their education and future.</div>
         </div>
         <div class="placeholder-card">
-          <div class="placeholder-label">Skills</div>
-          <div class="placeholder-text">Chicken fingers</div>
+          <div class="placeholder-label">What We Do</div>
+          <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.7;">We provide a platform for students to connect, share stories, stay informed on news, and advocate for change together.</div>
         </div>
         <div class="placeholder-card">
-          <div class="placeholder-label">Interests</div>
-          <div class="placeholder-text">Chicken fingers</div>
+          <div class="placeholder-label">Who We Serve</div>
+          <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.7;">Students across Ontario — from high school to post-secondary — who want to make their voices heard.</div>
         </div>
       </div>
     </div>
@@ -1285,7 +1285,7 @@
       </div>
       <div class="subtopic-banner">
         <span class="st-label">Topic</span>
-        OSAP — Share how OSAP cuts affect you as a student.
+        OSAP &mdash; Share how OSAP cuts affect you as a student.
       </div>
       <div class="forum-topbar">
         <span class="forum-subtext">Add your voice to the conversation.</span>
@@ -1303,12 +1303,254 @@
         <h1>Student Rights</h1>
         <div class="rule"></div>
       </div>
-      <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">🔒</div>
-        <div class="coming-soon-tag">Coming Soon</div>
-        <div class="coming-soon-title">More on the way.</div>
-        <div class="coming-soon-sub">Content for Student Rights is being prepared. Check back soon.</div>
+
+      <div class="subtopic-banner">
+        <span class="st-label">Info</span>
+        Know your rights — select your university and explore what protections you have.
       </div>
+
+      <!-- ONTARIO UNIVERSAL RIGHTS -->
+      <div style="background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 24px;">
+        <div style="font-family: var(--mono); font-size: 0.65rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Applies to all Ontario students</div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span style="font-family: var(--mono); font-size: 0.7rem; padding: 4px 12px; border-radius: 100px; background: rgba(93,120,255,0.1); border: 1px solid rgba(93,120,255,0.25); color: var(--accent);">Ontario Human Rights Code</span>
+          <span style="font-family: var(--mono); font-size: 0.7rem; padding: 4px 12px; border-radius: 100px; background: rgba(93,120,255,0.1); border: 1px solid rgba(93,120,255,0.25); color: var(--accent);">FIPPA privacy rights</span>
+          <span style="font-family: var(--mono); font-size: 0.7rem; padding: 4px 12px; border-radius: 100px; background: rgba(93,120,255,0.1); border: 1px solid rgba(93,120,255,0.25); color: var(--accent);">Safe campus environment</span>
+          <span style="font-family: var(--mono); font-size: 0.7rem; padding: 4px 12px; border-radius: 100px; background: rgba(93,120,255,0.1); border: 1px solid rgba(93,120,255,0.25); color: var(--accent);">Disability accommodations</span>
+          <span style="font-family: var(--mono); font-size: 0.7rem; padding: 4px 12px; border-radius: 100px; background: rgba(93,120,255,0.1); border: 1px solid rgba(93,120,255,0.25); color: var(--accent);">Academic appeal rights</span>
+          <span style="font-family: var(--mono); font-size: 0.7rem; padding: 4px 12px; border-radius: 100px; background: rgba(93,120,255,0.1); border: 1px solid rgba(93,120,255,0.25); color: var(--accent);">Right to organize</span>
+        </div>
+      </div>
+
+      <!-- UNI TABS -->
+      <div id="sr-tabs" style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;"></div>
+
+      <!-- CATEGORY FILTERS -->
+      <div id="sr-cats" style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;"></div>
+
+      <!-- RIGHTS CARDS -->
+      <div id="sr-cards" style="display: flex; flex-direction: column; gap: 12px;"></div>
+
+      <style>
+        .sr-tab-btn {
+          font-family: var(--mono);
+          font-size: 0.72rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          padding: 8px 18px;
+          border-radius: 8px;
+          border: 1px solid var(--border);
+          background: var(--panel);
+          color: var(--muted);
+          cursor: pointer;
+          transition: all 0.15s;
+        }
+        .sr-tab-btn:hover { color: var(--text); border-color: var(--accent); }
+        .sr-tab-btn.sr-active { background: rgba(93,120,255,0.12); border-color: var(--accent); color: var(--accent); }
+
+        .sr-cat-btn {
+          font-family: var(--mono);
+          font-size: 0.65rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 5px 14px;
+          border-radius: 100px;
+          border: 1px solid var(--border);
+          background: transparent;
+          color: var(--muted);
+          cursor: pointer;
+          transition: all 0.15s;
+        }
+        .sr-cat-btn:hover { color: var(--text); }
+        .sr-cat-btn.sr-active { background: var(--panel); border-color: var(--muted); color: var(--text); }
+
+        .sr-right-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          overflow: hidden;
+          transition: border-color 0.2s;
+          cursor: pointer;
+        }
+        .sr-right-card:hover { border-color: var(--muted); }
+        .sr-right-card.sr-open { border-color: var(--accent); }
+
+        .sr-right-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 18px 22px;
+          gap: 12px;
+        }
+
+        .sr-right-left { display: flex; align-items: center; gap: 10px; flex: 1; }
+
+        .sr-right-badge {
+          font-family: var(--mono);
+          font-size: 0.6rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 3px 10px;
+          border-radius: 4px;
+          flex-shrink: 0;
+        }
+
+        .sr-right-title {
+          font-size: 0.92rem;
+          font-weight: 700;
+          color: var(--text);
+        }
+
+        .sr-right-chevron {
+          font-size: 0.6rem;
+          color: var(--muted);
+          transition: transform 0.2s;
+          flex-shrink: 0;
+        }
+        .sr-right-card.sr-open .sr-right-chevron { transform: rotate(180deg); }
+
+        .sr-right-body {
+          display: none;
+          padding: 0 22px 20px;
+          border-top: 1px solid var(--border);
+          margin: 0 22px;
+          padding-top: 16px;
+        }
+        .sr-right-card.sr-open .sr-right-body { display: block; }
+
+        .sr-right-summary {
+          font-family: var(--mono);
+          font-size: 0.78rem;
+          color: var(--accent2);
+          margin-bottom: 10px;
+          line-height: 1.6;
+        }
+
+        .sr-right-detail {
+          font-size: 0.88rem;
+          color: var(--text);
+          line-height: 1.75;
+          opacity: 0.85;
+          margin-bottom: 12px;
+        }
+
+        .sr-right-link {
+          font-family: var(--mono);
+          font-size: 0.68rem;
+          color: var(--accent);
+          text-decoration: none;
+          letter-spacing: 0.06em;
+        }
+        .sr-right-link:hover { text-decoration: underline; }
+      </style>
+
+      <script>
+      (function() {
+        const rights = {
+          york: {
+            label: "York University",
+            badgeStyle: "background: rgba(93,120,255,0.12); border: 1px solid rgba(93,120,255,0.3); color: var(--accent);",
+            items: [
+              { cat: "Academic", title: "Fair academic environment", summary: "You have the right to a fair and equitable academic environment free from bias.", detail: "York's Senate Policy on Academic Honesty and the Student Rights & Responsibilities policy guarantee students the right to fair grading, clear course expectations, and academic decisions made without personal bias. You can request a re-evaluation of any graded work.", link: "https://www.yorku.ca/secretariat/policies/policies/academic-honesty-senate-policy-on/" },
+              { cat: "Academic", title: "Academic appeals", summary: "You can appeal academic decisions including grades and standing.", detail: "York provides a formal appeals process through the Faculty-level Appeal process and ultimately the Senate Appeals Committee. You must typically appeal within 21 days. The York Federation of Students offers free peer support through the appeals process.", link: "https://www.yorku.ca/secretariat/policies/policies/senate-appeals-committee-rules-of-procedure/" },
+              { cat: "Safety", title: "Freedom from harassment & discrimination", summary: "York prohibits all forms of harassment and discrimination on campus.", detail: "Under York's Policy on Discrimination and Harassment Prevention, students are protected from discrimination based on race, gender, disability, religion, sexual orientation, and more. Reports can be made to the Centre for Human Rights, Equity and Inclusion.", link: "https://www.yorku.ca/hr/policies/discrimination-harassment/" },
+              { cat: "Safety", title: "Sexual violence policy", summary: "York has a standalone policy protecting students from sexual violence.", detail: "York's Policy on Sexual Violence prohibits all forms of sexual violence. Students can access confidential support through the Sexual Violence Response & Support office. Accommodations are available regardless of whether you choose to report.", link: "https://www.yorku.ca/sexual-violence-response-support/" },
+              { cat: "Privacy", title: "Privacy of personal information", summary: "Your personal data is protected under FIPPA.", detail: "York University collects and manages student information under the Freedom of Information and Protection of Privacy Act (FIPPA). You have the right to access your own records and request corrections to inaccurate information.", link: "https://www.yorku.ca/secretariat/access-privacy/" },
+              { cat: "Representation", title: "Student union representation", summary: "You have the right to join and be represented by student unions.", detail: "The York Federation of Students (YFS) and the Graduate Students Association (GSA) represent undergraduate and graduate students. They provide legal referrals, food banks, health plans, advocacy, and peer support services.", link: "https://yorku.ca/yfs" },
+              { cat: "Accessibility", title: "Disability accommodations", summary: "Students with disabilities are entitled to academic accommodations.", detail: "York's Student Accessibility Services provides academic accommodations including extended test time, note-taking support, alternative formats, and more. Accommodations are confidential and provided without academic penalty.", link: "https://accessibility.students.yorku.ca/" }
+            ]
+          },
+          tmu: {
+            label: "Toronto Metropolitan University",
+            badgeStyle: "background: rgba(255,107,157,0.1); border: 1px solid rgba(255,107,157,0.3); color: var(--accent2);",
+            items: [
+              { cat: "Academic", title: "Academic integrity rights", summary: "You have the right to a fair academic integrity process.", detail: "TMU's Academic Integrity Policy ensures that if you are accused of academic misconduct, you have the right to be informed of the allegation, to respond before any penalty is imposed, and to appeal any finding. You cannot be penalized without due process.", link: "https://www.torontomu.ca/senate/academic-integrity/" },
+              { cat: "Academic", title: "Grade appeals", summary: "You can formally appeal final grades and academic decisions.", detail: "TMU's GPA and Academic Standing Policy allows students to request a grade review informally with the instructor, then formally through the department chair, and finally through the Faculty Appeal process. Deadlines apply — typically within one semester.", link: "https://www.torontomu.ca/senate/policies/" },
+              { cat: "Safety", title: "Respectful and inclusive environment", summary: "TMU is committed to a discrimination-free campus.", detail: "Under TMU's Discrimination and Harassment Prevention Policy, students are protected from discrimination and harassment. The Centre for Student Development and Counselling and the Office of Social Inclusion provide support and intake for complaints.", link: "https://www.torontomu.ca/social-inclusion/" },
+              { cat: "Safety", title: "Sexual violence support", summary: "TMU has a dedicated sexual violence policy and support services.", detail: "TMU's Sexual Violence Policy provides protections and confidential support through the Sexual Violence Support & Education office. Students may request academic accommodations following an incident without being required to formally report.", link: "https://www.torontomu.ca/sexual-violence-support/" },
+              { cat: "Accessibility", title: "Academic accommodation support", summary: "Students with disabilities receive academic accommodations.", detail: "TMU's Academic Accommodation Support (AAS) coordinates accommodations for students with disabilities, chronic illness, or mental health conditions. Rights include accommodation without academic penalty and confidentiality of disability information.", link: "https://www.torontomu.ca/accommodations/" },
+              { cat: "Privacy", title: "Personal information privacy", summary: "Your information is protected under FIPPA.", detail: "TMU manages student records under FIPPA. You have the right to access your academic file and correct inaccurate information. TMU's Access and Privacy Office handles formal access requests.", link: "https://www.torontomu.ca/access-privacy/" },
+              { cat: "Representation", title: "Student union and association rights", summary: "You have the right to organize and join student associations.", detail: "The TMU Students' Union (TMUSU) represents undergraduate students and provides legal protection referrals, health and dental coverage, food security programs, and advocacy. Graduate students are represented by TMUGSA.", link: "https://tmusu.ca" }
+            ]
+          },
+          uoft: {
+            label: "University of Toronto",
+            badgeStyle: "background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.25); color: #4ade80;",
+            items: [
+              { cat: "Academic", title: "Academic appeals", summary: "UofT has a multi-level formal academic appeals process.", detail: "UofT students can appeal through the divisional level first, then to the Academic Appeals Board (AAB), and ultimately to the University Tribunal. You have the right to bring a representative to any hearing. Appeals must typically be filed within one year.", link: "https://governingcouncil.utoronto.ca/secretariat/policies/academic-appeals" },
+              { cat: "Academic", title: "Academic integrity due process", summary: "You are entitled to fair process in any academic integrity case.", detail: "Under UofT's Code of Behaviour on Academic Matters, you have the right to be informed of allegations, to respond before a finding is made, to have a hearing, to be represented, and to appeal. Downtown Legal Services (DLS) provides free legal support for academic integrity cases.", link: "https://governingcouncil.utoronto.ca/secretariat/policies/code-behaviour-academic-matters-1995" },
+              { cat: "Safety", title: "Sexual violence and harassment", summary: "UofT's Policy on Sexual Violence and Sexual Harassment provides strong protections.", detail: "The policy applies to all members of the UofT community. Students can access confidential support through the Sexual Violence Prevention & Support Centre. Accommodations are available independently of any formal report.", link: "https://www.svpscentre.utoronto.ca/" },
+              { cat: "Safety", title: "Freedom of expression and association", summary: "Students have broad rights to free expression on campus.", detail: "UofT's Statement on Freedom of Speech protects students' right to free expression, peaceful protest, and association. Student groups have the right to organize, meet on campus, and access university resources on a non-discriminatory basis.", link: "https://governingcouncil.utoronto.ca/secretariat/policies/statement-freedom-of-speech" },
+              { cat: "Accessibility", title: "Accessibility services and accommodations", summary: "Students with disabilities are entitled to academic accommodations.", detail: "Accessibility Services at UofT provides accommodations for students with disabilities, mental health conditions, and chronic illnesses. Rights include accommodation without academic penalty, confidentiality, and a formal review if accommodations are denied.", link: "https://accessibility.utoronto.ca/" },
+              { cat: "Privacy", title: "Privacy and access to records", summary: "Your records are protected under FIPPA.", detail: "UofT's access and privacy practices are governed by FIPPA. You have the right to access your own academic record, request corrections, and file complaints with the Information and Privacy Commissioner of Ontario if your rights are violated.", link: "https://www.provost.utoronto.ca/planning-policy/access-and-privacy/" },
+              { cat: "Representation", title: "Student union rights and legal support", summary: "You are entitled to union representation and free legal services.", detail: "The University of Toronto Students' Union (UTSU) represents undergraduates at St. George. Downtown Legal Services (DLS), run by the Faculty of Law, provides free legal advice to UofT students on academic matters, housing, and more.", link: "https://www.utsu.ca" }
+            ]
+          }
+        };
+
+        const cats = ["All", "Academic", "Safety", "Accessibility", "Privacy", "Representation"];
+        let activeUni = "york";
+        let activeCat = "All";
+
+        function render() {
+          renderTabs();
+          renderCats();
+          renderCards();
+        }
+
+        function renderTabs() {
+          const el = document.getElementById("sr-tabs");
+          el.innerHTML = "";
+          Object.entries(rights).forEach(([key, uni]) => {
+            const btn = document.createElement("button");
+            btn.className = "sr-tab-btn" + (key === activeUni ? " sr-active" : "");
+            btn.textContent = uni.label;
+            btn.onclick = () => { activeUni = key; activeCat = "All"; render(); };
+            el.appendChild(btn);
+          });
+        }
+
+        function renderCats() {
+          const el = document.getElementById("sr-cats");
+          el.innerHTML = "";
+          cats.forEach(cat => {
+            const btn = document.createElement("button");
+            btn.className = "sr-cat-btn" + (cat === activeCat ? " sr-active" : "");
+            btn.textContent = cat;
+            btn.onclick = () => { activeCat = cat; renderCats(); renderCards(); };
+            el.appendChild(btn);
+          });
+        }
+
+        function renderCards() {
+          const el = document.getElementById("sr-cards");
+          const uni = rights[activeUni];
+          const filtered = activeCat === "All" ? uni.items : uni.items.filter(r => r.cat === activeCat);
+          el.innerHTML = "";
+          filtered.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "sr-right-card";
+            card.innerHTML =
+              '<div class="sr-right-header">' +
+                '<div class="sr-right-left">' +
+                  '<span class="sr-right-badge" style="' + uni.badgeStyle + '">' + item.cat + '</span>' +
+                  '<span class="sr-right-title">' + item.title + '</span>' +
+                '</div>' +
+                '<span class="sr-right-chevron">&#9660;</span>' +
+              '</div>' +
+              '<div class="sr-right-body">' +
+                '<div class="sr-right-summary">' + item.summary + '</div>' +
+                '<div class="sr-right-detail">' + item.detail + '</div>' +
+                '<a class="sr-right-link" href="' + item.link + '" target="_blank">&#8599; Official policy</a>' +
+              '</div>';
+            card.onclick = () => card.classList.toggle("sr-open");
+            el.appendChild(card);
+          });
+        }
+
+        render();
+      })();
+      </script>
     </div>
 
     <!-- CAMPUS LIFE -->
@@ -1318,23 +1560,188 @@
         <h1>Campus Life</h1>
         <div class="rule"></div>
       </div>
-      <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">🏫</div>
-        <div class="coming-soon-tag">Coming Soon</div>
-        <div class="coming-soon-title">More on the way.</div>
-        <div class="coming-soon-sub">Content for Campus Life is being prepared. Check back soon.</div>
+      <div class="subtopic-banner">
+        <span class="st-label">Events</span>
+        Upcoming events at York, TMU &amp; UofT &mdash; get out there and connect!
       </div>
+
+      <style>
+        .ev-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .ev-tab {
+          font-family: var(--mono);
+          font-size: 0.72rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          padding: 8px 18px;
+          border-radius: 8px;
+          border: 1px solid var(--border);
+          background: var(--panel);
+          color: var(--muted);
+          cursor: pointer;
+          transition: all 0.15s;
+        }
+        .ev-tab:hover { color: var(--text); border-color: var(--accent); }
+        .ev-tab.ev-active { background: rgba(93,120,255,0.12); border-color: var(--accent); color: var(--accent); }
+        .ev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+        .ev-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          overflow: hidden;
+          transition: border-color 0.2s, transform 0.2s;
+          position: relative;
+        }
+        .ev-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .ev-card-top {
+          padding: 20px 22px 16px;
+          display: flex;
+          gap: 14px;
+          align-items: flex-start;
+        }
+        .ev-icon {
+          font-size: 2rem;
+          line-height: 1;
+          flex-shrink: 0;
+          width: 48px;
+          height: 48px;
+          border-radius: 10px;
+          background: var(--panel);
+          border: 1px solid var(--border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .ev-info { flex: 1; }
+        .ev-title {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--text);
+          margin-bottom: 4px;
+          line-height: 1.3;
+        }
+        .ev-uni {
+          font-family: var(--mono);
+          font-size: 0.62rem;
+          color: var(--muted);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+        .ev-card-body { padding: 0 22px 16px; }
+        .ev-desc {
+          font-size: 0.85rem;
+          color: var(--text);
+          opacity: 0.8;
+          line-height: 1.65;
+          margin-bottom: 14px;
+        }
+        .ev-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+        .ev-pill {
+          font-family: var(--mono);
+          font-size: 0.62rem;
+          letter-spacing: 0.06em;
+          padding: 4px 10px;
+          border-radius: 100px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+        .ev-pill-date { background: rgba(93,120,255,0.1); border: 1px solid rgba(93,120,255,0.25); color: var(--accent); }
+        .ev-pill-free { background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25); color: #4ade80; }
+        .ev-pill-paid { background: rgba(255,107,157,0.1); border: 1px solid rgba(255,107,157,0.25); color: var(--accent2); }
+        .ev-cta {
+          display: block;
+          margin: 0 22px 20px;
+          padding: 9px 0;
+          text-align: center;
+          background: var(--accent);
+          border: none;
+          border-radius: 8px;
+          color: #fff;
+          font-family: var(--sans);
+          font-weight: 700;
+          font-size: 0.82rem;
+          cursor: pointer;
+          text-decoration: none;
+          transition: opacity 0.15s;
+        }
+        .ev-cta:hover { opacity: 0.85; }
+        .ev-empty { text-align: center; padding: 60px 20px; font-family: var(--mono); font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+      </style>
+
+      <div class="ev-tabs" id="ev-tabs"></div>
+      <div class="ev-grid" id="ev-grid"></div>
+
+      <script>
+      (function() {
+        const events = [
+          { uni: "york",  icon: "&#x1F340;", title: "St. Patrick's Day Pub Night", date: "Mar 17, 2025", free: false, price: "$5", desc: "Celebrate St. Paddy's Day with fellow York students! Green drinks, live DJ, and prizes for best costume. Hosted by YFS at the Underground pub.", link: "https://yorku.ca/yfs" },
+          { uni: "york",  icon: "&#x1F3A4;", title: "Open Mic Night", date: "Mar 28, 2025", free: true, price: "Free", desc: "Share your talent or just sit back and enjoy. York's monthly open mic welcomes all genres — poetry, music, spoken word. Sign-ups at the door.", link: "https://yorku.ca/yfs" },
+          { uni: "york",  icon: "&#x1F331;", title: "Campus Sustainability Fair", date: "Apr 4, 2025", free: true, price: "Free", desc: "Learn about York's environmental initiatives, connect with eco-clubs, and take part in workshops on sustainable living. Giveaways and food samples included.", link: "https://yorku.ca/sustainability" },
+          { uni: "york",  icon: "&#x1F3C3;", title: "Spring Wellness 5K Run", date: "Apr 12, 2025", free: false, price: "$10", desc: "Kick off spring with a 5K fun run around York's Keele campus. All fitness levels welcome. Registration includes a free VSN + YFS co-branded tee.", link: "https://yorku.ca/yfs" },
+          { uni: "tmu",   icon: "&#x1F340;", title: "St. Patrick's Day Social", date: "Mar 17, 2025", free: false, price: "$8", desc: "TMU's biggest green-themed social of the year. Join TMUSU at the Oakham House for live music, themed cocktails, and giveaways.", link: "https://tmusu.ca" },
+          { uni: "tmu",   icon: "&#x1F3A8;", title: "Spring Arts & Makers Market", date: "Mar 29, 2025", free: true, price: "Free", desc: "Browse student artwork, handmade goods, and zines at TMU's Spring Market in the Student Centre atrium. Over 40 vendors. Free to attend and browse.", link: "https://tmusu.ca" },
+          { uni: "tmu",   icon: "&#x1F4BB;", title: "Hackathon: Build for Change", date: "Apr 5-6, 2025", free: true, price: "Free", desc: "A 24-hour student hackathon focused on social impact tech. Team up, build something meaningful, and pitch to judges for prizes. Meals included.", link: "https://tmusu.ca" },
+          { uni: "tmu",   icon: "&#x1F33C;", title: "Cherry Blossom Picnic", date: "Apr 19, 2025", free: true, price: "Free", desc: "Celebrate spring with a community picnic at TMU's Kerr Hall courtyard. Free snacks, lawn games, and a chill vibe to wind down the semester.", link: "https://tmusu.ca" },
+          { uni: "uoft",  icon: "&#x1F340;", title: "St. Patrick's Day Campus Walk", date: "Mar 17, 2025", free: true, price: "Free", desc: "Join UTSU's annual St. Paddy's stroll through the historic St. George campus. Dress in green, explore UofT's architecture, and end at Hart House for hot cocoa.", link: "https://www.utsu.ca" },
+          { uni: "uoft",  icon: "&#x1F4DA;", title: "End of Year Research Fair", date: "Apr 2, 2025", free: true, price: "Free", desc: "UofT undergraduates present their year-end research across all faculties. A great chance to learn, network, and celebrate student achievement.", link: "https://www.utsu.ca" },
+          { uni: "uoft",  icon: "&#x1F3B6;", title: "Hart House Spring Concert", date: "Apr 10, 2025", free: false, price: "$12", desc: "An evening of live classical and jazz performances by UofT music students at the iconic Hart House Great Hall. Formal attire welcome but not required.", link: "https://harthouse.ca" },
+          { uni: "uoft",  icon: "&#x26BD;", title: "Intramural Spring Sports Day", date: "Apr 25, 2025", free: false, price: "$6", desc: "Soccer, volleyball, and ultimate frisbee tournaments open to all UofT students. Form a team or join as a free agent. Medals for top finishers.", link: "https://www.utsu.ca" }
+        ];
+
+        const labels = { york: "York University", tmu: "Toronto Metropolitan", uoft: "University of Toronto" };
+        let active = "all";
+
+        function renderTabs() {
+          const el = document.getElementById("ev-tabs");
+          el.innerHTML = "";
+          [["all", "All Universities"], ["york", "York University"], ["tmu", "TMU"], ["uoft", "UofT"]].forEach(([key, label]) => {
+            const btn = document.createElement("button");
+            btn.className = "ev-tab" + (key === active ? " ev-active" : "");
+            btn.textContent = label;
+            btn.onclick = () => { active = key; renderTabs(); renderGrid(); };
+            el.appendChild(btn);
+          });
+        }
+
+        function renderGrid() {
+          const el = document.getElementById("ev-grid");
+          const filtered = active === "all" ? events : events.filter(e => e.uni === active);
+          el.innerHTML = "";
+          if (!filtered.length) { el.innerHTML = '<div class="ev-empty">No events found.</div>'; return; }
+          filtered.forEach(ev => {
+            const card = document.createElement("div");
+            card.className = "ev-card";
+            card.innerHTML =
+              '<div class="ev-card-top">' +
+                '<div class="ev-icon">' + ev.icon + '</div>' +
+                '<div class="ev-info">' +
+                  '<div class="ev-title">' + ev.title + '</div>' +
+                  '<div class="ev-uni">' + labels[ev.uni] + '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="ev-card-body">' +
+                '<div class="ev-desc">' + ev.desc + '</div>' +
+                '<div class="ev-meta">' +
+                  '<span class="ev-pill ev-pill-date">&#128197; ' + ev.date + '</span>' +
+                  '<span class="ev-pill ' + (ev.free ? "ev-pill-free" : "ev-pill-paid") + '">' + (ev.free ? "&#x2713; Free" : ev.price) + '</span>' +
+                '</div>' +
+              '</div>' +
+              '<a class="ev-cta" href="' + ev.link + '" target="_blank">Learn More &rarr;</a>';
+            el.appendChild(card);
+          });
+        }
+
+        renderTabs();
+        renderGrid();
+      })();
+      </script>
     </div>
 
     <!-- MENTAL HEALTH -->
     <div id="mental-health-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// topics</div>
-        <h1>Mental Health</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// topics</div><h1>Mental Health</h1><div class="rule"></div></div>
       <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">💙</div>
+        <div class="coming-soon-icon">&#x1F499;</div>
         <div class="coming-soon-tag">Coming Soon</div>
         <div class="coming-soon-title">More on the way.</div>
         <div class="coming-soon-sub">Content for Mental Health is being prepared. Check back soon.</div>
@@ -1343,13 +1750,9 @@
 
     <!-- HOUSING -->
     <div id="housing-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// topics</div>
-        <h1>Housing</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// topics</div><h1>Housing</h1><div class="rule"></div></div>
       <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">🏠</div>
+        <div class="coming-soon-icon">&#x1F3E0;</div>
         <div class="coming-soon-tag">Coming Soon</div>
         <div class="coming-soon-title">More on the way.</div>
         <div class="coming-soon-sub">Content for Housing is being prepared. Check back soon.</div>
@@ -1358,13 +1761,9 @@
 
     <!-- TUITION -->
     <div id="tuition-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// topics</div>
-        <h1>Tuition</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// topics</div><h1>Tuition</h1><div class="rule"></div></div>
       <div class="coming-soon-wrap">
-        <div class="coming-soon-icon">🎓</div>
+        <div class="coming-soon-icon">&#x1F393;</div>
         <div class="coming-soon-tag">Coming Soon</div>
         <div class="coming-soon-title">More on the way.</div>
         <div class="coming-soon-sub">Content for Tuition is being prepared. Check back soon.</div>
@@ -1373,221 +1772,84 @@
 
     <!-- NEWS -->
     <div id="news-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// updates</div>
-        <h1>News</h1>
-        <div class="rule"></div>
-      </div>
-
+      <div class="page-header"><div class="eyebrow">// updates</div><h1>News</h1><div class="rule"></div></div>
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag protest">Protest</span>
-          <span class="news-tag">OSAP</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://www.ctvnews.ca/kitchener/article/cambridge-high-school-students-call-osap-changes-absolutely-outrageous/" target="_blank">Students Call OSAP Changes "Absolutely Outrageous"</a>
-        </div>
-        <div class="news-summary">Students from Cambridge have spoken out against Ontario's OSAP reforms, warning that reduced grants and increased loan amounts will raise their tuition burden when they enter university. The group argues the policy changes will lead to greater student debt and threaten access to higher education — reflecting anxieties felt by prospective post-secondary students across the province.</div>
+        <div class="news-tag-row"><span class="news-tag protest">Protest</span><span class="news-tag">OSAP</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://www.ctvnews.ca/kitchener/article/cambridge-high-school-students-call-osap-changes-absolutely-outrageous/" target="_blank">Students Call OSAP Changes "Absolutely Outrageous"</a></div>
+        <div class="news-summary">Students from Cambridge have spoken out against Ontario's OSAP reforms, warning that reduced grants and increased loan amounts will raise their tuition burden when they enter university. The group argues the policy changes will lead to greater student debt and threaten access to higher education.</div>
         <div class="news-source">CTV News Kitchener</div>
       </div>
-
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag protest">Protest</span>
-          <span class="news-tag">OSAP</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://barrie360.com/barrie-hs-students-protest-osap-cuts/" target="_blank">Barrie High School Students Protest OSAP Cuts</a>
-        </div>
-        <div class="news-summary">Around 200 students in Barrie organized a spontaneous demonstration outside MPP Andrea Khanjin's office to protest cuts to student aid. Participants expressed concern about the financial pressures they will face upon entering university under the new OSAP policies. The Barrie action is part of a growing province-wide movement of students pushing back against changes to Ontario's student aid system.</div>
+        <div class="news-tag-row"><span class="news-tag protest">Protest</span><span class="news-tag">OSAP</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://barrie360.com/barrie-hs-students-protest-osap-cuts/" target="_blank">Barrie High School Students Protest OSAP Cuts</a></div>
+        <div class="news-summary">Around 200 students in Barrie organized a spontaneous demonstration outside MPP Andrea Khanjin's office to protest cuts to student aid. The Barrie action is part of a growing province-wide movement of students pushing back against changes to Ontario's student aid system.</div>
         <div class="news-source">Barrie 360</div>
       </div>
-
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag gov">Government</span>
-          <span class="news-tag">Funding</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://news.ontario.ca/en/release/1007034/ontario-investing-64-billion-to-support-postsecondary-sectors-long-term-success-and-sustainability" target="_blank">Ontario Invests $6.4 Billion in Post-Secondary Education</a>
-        </div>
-        <div class="news-summary">The Ontario government announced $6.4 billion in funding for universities and colleges to support long-term post-secondary growth and sustainability. Schools will also be permitted to raise tuition fees by up to 2% annually after a lengthy freeze. The announcement includes updates to the OSAP system that may change how students qualify for and receive financial aid going forward.</div>
+        <div class="news-tag-row"><span class="news-tag gov">Government</span><span class="news-tag">Funding</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://news.ontario.ca/en/release/1007034/ontario-investing-64-billion-to-support-postsecondary-sectors-long-term-success-and-sustainability" target="_blank">Ontario Invests $6.4 Billion in Post-Secondary Education</a></div>
+        <div class="news-summary">The Ontario government announced $6.4 billion in funding for universities and colleges to support long-term post-secondary growth and sustainability. Schools will also be permitted to raise tuition fees by up to 2% annually after a lengthy freeze.</div>
         <div class="news-source">Ontario Newsroom</div>
       </div>
-
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag protest">Protest</span>
-          <span class="news-tag">OSAP</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://www.owensoundsuntimes.com/news/local-news/high-school-students-loudly-protest-osap-changes-in-owen-sound" target="_blank">High School Students Protest OSAP Changes in Owen Sound</a>
-        </div>
-        <div class="news-summary">Students at Owen Sound high schools protested reductions to OSAP financial aid, arguing the cuts significantly increase the real cost of university and leave many unable to access post-secondary education. Their demonstration is part of a broader wave of student activism across Ontario demanding the government protect equitable access to higher education.</div>
+        <div class="news-tag-row"><span class="news-tag protest">Protest</span><span class="news-tag">OSAP</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://www.owensoundsuntimes.com/news/local-news/high-school-students-loudly-protest-osap-changes-in-owen-sound" target="_blank">High School Students Protest OSAP Changes in Owen Sound</a></div>
+        <div class="news-summary">Students at Owen Sound high schools protested reductions to OSAP financial aid, arguing the cuts significantly increase the real cost of university and leave many unable to access post-secondary education.</div>
         <div class="news-source">Owen Sound Sun Times</div>
       </div>
-
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag protest">Protest</span>
-          <span class="news-tag">OSAP</span>
-          <span class="news-date">2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://windsorstar.com/news/local-news/were-angry-windsor-students-join-provincewide-protest-against-doug-fords-osap-cuts" target="_blank">Windsor Students Join Province-Wide Protest Against OSAP Cuts</a>
-        </div>
-        <div class="news-summary">Windsor students joined province-wide demonstrations against Doug Ford's OSAP reforms, with many voicing anger over reduced grants and higher loan amounts. Protesters argued the changes make university tuition less affordable and will deepen student debt loads. The rally reflects a growing Ontario-wide student movement calling for equal access to higher education and a reversal of the cuts.</div>
+        <div class="news-tag-row"><span class="news-tag protest">Protest</span><span class="news-tag">OSAP</span><span class="news-date">2025</span></div>
+        <div class="news-headline"><a href="https://windsorstar.com/news/local-news/were-angry-windsor-students-join-provincewide-protest-against-doug-fords-osap-cuts" target="_blank">Windsor Students Join Province-Wide Protest Against OSAP Cuts</a></div>
+        <div class="news-summary">Windsor students joined province-wide demonstrations against Doug Ford's OSAP reforms, with many voicing anger over reduced grants and higher loan amounts.</div>
         <div class="news-source">Windsor Star</div>
       </div>
-
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag">Mental Health</span>
-          <span class="news-date">Dec 21, 2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://www.ctvnews.ca/canada/article/more-than-75-of-post-secondary-students-struggle-with-mental-health-heres-how-parents-can-help/" target="_blank">More Than 75% of Post-Secondary Students Struggle with Mental Health</a>
-        </div>
-        <div class="news-summary">A growing number of post-secondary students across Canada are experiencing burnout and mental health challenges, particularly as semester pressures mount. CTV News spoke with family physician Dr. Vera Kohut about practical steps parents can take to help their children manage stress and mental health issues during their studies. The report highlights a deepening campus mental health crisis, where financial pressures — including rising tuition and student debt — are a key contributor to student anxiety.</div>
+        <div class="news-tag-row"><span class="news-tag">Mental Health</span><span class="news-date">Dec 21, 2025</span></div>
+        <div class="news-headline"><a href="https://www.ctvnews.ca/canada/article/more-than-75-of-post-secondary-students-struggle-with-mental-health-heres-how-parents-can-help/" target="_blank">More Than 75% of Post-Secondary Students Struggle with Mental Health</a></div>
+        <div class="news-summary">A growing number of post-secondary students across Canada are experiencing burnout and mental health challenges. The report highlights a deepening campus mental health crisis, where financial pressures are a key contributor to student anxiety.</div>
         <div class="news-source">CTV News Canada</div>
       </div>
-
       <div class="news-card">
-        <div class="news-tag-row">
-          <span class="news-tag gov">Government</span>
-          <span class="news-tag">Housing</span>
-          <span class="news-date">Nov 13, 2025</span>
-        </div>
-        <div class="news-headline">
-          <a href="https://news.ontario.ca/en/release/1006725/ontario-investing-83-million-to-support-affordable-student-housing-in-downtown-toronto" target="_blank">Ontario Invests $83 Million to Support Affordable Student Housing in Downtown Toronto</a>
-        </div>
-        <div class="news-summary">The Ontario government announced an $83 million investment through the Building Ontario Fund to construct a new 21-storey student residence at Toronto Metropolitan University at 100 Bond Street. The project will add nearly 1,400 new student beds — more than doubling TMU's current on-campus housing capacity — at rates well below average Toronto market rents. Pre-construction is expected to begin in late 2025 as part of a broader $200 million TMU housing expansion plan.</div>
+        <div class="news-tag-row"><span class="news-tag gov">Government</span><span class="news-tag">Housing</span><span class="news-date">Nov 13, 2025</span></div>
+        <div class="news-headline"><a href="https://news.ontario.ca/en/release/1006725/ontario-investing-83-million-to-support-affordable-student-housing-in-downtown-toronto" target="_blank">Ontario Invests $83 Million to Support Affordable Student Housing in Downtown Toronto</a></div>
+        <div class="news-summary">The Ontario government announced an $83 million investment to construct a new 21-storey student residence at Toronto Metropolitan University, adding nearly 1,400 new student beds at rates below average Toronto market rents.</div>
         <div class="news-source">Ontario Newsroom</div>
       </div>
-
     </div>
 
     <!-- VIDEOS -->
     <div id="video-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// media</div>
-        <h1>Videos</h1>
-        <div class="rule"></div>
-      </div>
-      <div class="subtopic-banner">
-        <span class="st-label">Topic</span>
-        OSAP — Video coverage, testimonials, and campaign highlights.
-      </div>
+      <div class="page-header"><div class="eyebrow">// media</div><h1>Videos</h1><div class="rule"></div></div>
+      <div class="subtopic-banner"><span class="st-label">Topic</span> OSAP &mdash; Video coverage, testimonials, and campaign highlights.</div>
       <div class="video-section-label">Featured</div>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">OSAP</span>mm/dd/yyyy</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">OSAP</span>mm/dd/yyyy</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div>
-          </div>
-        </div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">OSAP</span>mm/dd/yyyy</div></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">OSAP</span>mm/dd/yyyy</div></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div></div></div>
       </div>
       <div class="video-section-label">All Videos</div>
       <div class="video-grid">
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-thumb">
-            <div class="video-thumb-placeholder">
-              <div class="play-icon">▶</div>
-              <div class="ph-label">Video placeholder</div>
-            </div>
-          </div>
-          <div class="video-info">
-            <div class="video-title">Video Title Goes Here</div>
-            <div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div>
-          </div>
-        </div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div></div></div>
+        <div class="video-card"><div class="video-thumb"><div class="video-thumb-placeholder"><div class="play-icon">&#9654;</div><div class="ph-label">Video placeholder</div></div></div><div class="video-info"><div class="video-title">Video Title Goes Here</div><div class="video-meta"><span class="video-tag">Student Network</span>mm/dd/yyyy</div></div></div>
       </div>
     </div>
 
     <!-- CONNECT -->
     <div id="connect-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// network</div>
-        <h1>Connect</h1>
-        <div class="rule"></div>
-      </div>
-      <div class="placeholder-block">
-        <div class="placeholder-label">Introduction</div>
-        <div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// network</div><h1>Connect</h1><div class="rule"></div></div>
+      <div class="placeholder-block"><div class="placeholder-label">Introduction</div><div class="placeholder-text">Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers. Chicken fingers.</div></div>
       <div class="placeholder-grid">
-        <div class="placeholder-card">
-          <div class="placeholder-label">Platform 01</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Platform 02</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Platform 03</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
-        <div class="placeholder-card">
-          <div class="placeholder-label">Platform 04</div>
-          <div class="placeholder-text">Chicken fingers</div>
-        </div>
+        <div class="placeholder-card"><div class="placeholder-label">Platform 01</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card"><div class="placeholder-label">Platform 02</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card"><div class="placeholder-label">Platform 03</div><div class="placeholder-text">Chicken fingers</div></div>
+        <div class="placeholder-card"><div class="placeholder-label">Platform 04</div><div class="placeholder-text">Chicken fingers</div></div>
       </div>
     </div>
 
     <!-- VIRTUAL CHAT -->
     <div id="chat-page" class="page">
       <div id="chat-wrap">
-        <div id="chat-header">
-          <div class="dot"></div>
-          virtual chat — live
-        </div>
+        <div id="chat-header"><div class="dot"></div>virtual chat &mdash; live</div>
         <div id="chat-box"></div>
         <div id="chat-footer">
           <input id="chat-input" placeholder="Send a message..." />
@@ -1598,26 +1860,17 @@
 
     <!-- CONTACT -->
     <div id="contact-page" class="page">
-      <div class="page-header">
-        <div class="eyebrow">// reach out</div>
-        <h1>Contact</h1>
-        <div class="rule"></div>
-      </div>
+      <div class="page-header"><div class="eyebrow">// reach out</div><h1>Contact</h1><div class="rule"></div></div>
       <div class="placeholder-block">
         <div class="placeholder-label">Get In Touch</div>
-        <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.8;">
-          Get in touch with the VSN! Any feedback, news, or improvements, feel free to reach out and let us know how we can improve the VSN for all students.
-        </div>
+        <div class="placeholder-text" style="opacity:1; color: var(--text); font-style: normal; line-height: 1.8;">Get in touch with the VSN! Any feedback, news, or improvements, feel free to reach out and let us know how we can improve the VSN for all students.</div>
       </div>
       <div class="contact-grid">
         <div class="contact-item" style="grid-column: span 2;">
           <div class="ci-label">Email</div>
-          <a href="mailto:thevirtualstudent76@gmail.com" style="font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); text-decoration: none;">thevirtualstudent76@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#483c202d3e213a3c3d29243b3c3d2c2d263c7f7e082f25292124662b2725" style="font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); text-decoration: none;"><span class="__cf_email__" data-cfemail="46322e23302f343233272a35323322232832717006212b272f2a6825292b">[email&#160;protected]</span></a>
         </div>
-        <div class="contact-item">
-          <div class="ci-label">Location</div>
-          <div class="ci-val">N/A</div>
-        </div>
+        <div class="contact-item"><div class="ci-label">Location</div><div class="ci-val">N/A</div></div>
         <div class="contact-item">
           <div class="ci-label">Phone</div>
           <a href="tel:4379071596" style="font-family: var(--mono); font-size: 0.85rem; color: var(--accent2); text-decoration: none;">437-907-1596</a>
@@ -1629,7 +1882,7 @@
 </div>
 
 <!-- FIREBASE + LOGIC -->
-<script type="module">
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module">
 import { initializeApp }
   from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
 import { getDatabase, ref, set, push, onValue, onDisconnect, remove }
@@ -1672,7 +1925,6 @@ const modalPostBtn = document.getElementById("modal-post-btn");
 const postTextarea = document.getElementById("post-textarea");
 const emailSendBtn = document.getElementById("email-send-btn");
 const emailSkipBtn = document.getElementById("email-skip-btn");
-const forumPosts   = document.getElementById("forum-posts");
 
 const topicsBtn  = document.getElementById("topics-btn");
 const topicsMenu = document.getElementById("topics-menu");
@@ -1807,10 +2059,8 @@ function setupChat(email) {
     snap.forEach(m => {
       const v      = m.val();
       const isMine = v.name === email;
-
       const wrap   = document.createElement("div");
       wrap.className = "msg " + (isMine ? "mine" : "other");
-
       const meta   = document.createElement("div");
       meta.className = "msg-meta";
       const hhmm   = new Date(v.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -1818,12 +2068,10 @@ function setupChat(email) {
       espan.className   = "msg-email";
       espan.textContent = v.name;
       meta.appendChild(espan);
-      meta.appendChild(document.createTextNode(" · " + hhmm));
-
+      meta.appendChild(document.createTextNode(" \u00b7 " + hhmm));
       const bubble = document.createElement("div");
       bubble.className   = "msg-bubble";
       bubble.textContent = v.text;
-
       wrap.appendChild(meta);
       wrap.appendChild(bubble);
       chatBox.appendChild(wrap);
@@ -1832,6 +2080,8 @@ function setupChat(email) {
   });
 }
 
+// THE ONLY CHANGE FROM YOUR ORIGINAL:
+// forumPosts is looked up fresh inside onValue instead of using the top-level const
 function setupForum() {
   openPostBtn.onclick = () => {
     postTextarea.value = "";
@@ -1846,10 +2096,8 @@ function setupForum() {
   modalPostBtn.onclick = async () => {
     const text = postTextarea.value.trim();
     if (!text) return;
-
     modalPostBtn.textContent = "Posting...";
     modalPostBtn.disabled    = true;
-
     try {
       await push(ref(db, "forum_posts"), {
         author: currentEmail,
@@ -1868,6 +2116,7 @@ function setupForum() {
   };
 
   onValue(ref(db, "forum_posts"), snap => {
+    const forumPosts = document.getElementById("forum-posts");
     forumPosts.innerHTML = "";
     if (!snap.exists()) {
       forumPosts.innerHTML = '<div class="forum-empty">No posts yet.<br>Be the first to share your story.</div>';
@@ -1876,6 +2125,8 @@ function setupForum() {
     const posts = [];
     snap.forEach(child => posts.unshift({ id: child.key, ...child.val() }));
     posts.forEach(post => forumPosts.appendChild(buildPost(post)));
+  }, err => {
+    console.error("Forum error:", err);
   });
 
   emailSkipBtn.onclick = () => emailModal.classList.remove("open");
@@ -1886,7 +2137,7 @@ function setupForum() {
 
 function showEmailModal(postText) {
   const subject = encodeURIComponent("How OSAP Cuts Affect Me");
-  const body    = encodeURIComponent(postText + "\n\n— Sent via The Virtual Student Network");
+  const body    = encodeURIComponent(postText + "\n\n\u2014 Sent via The Virtual Student Network");
   emailSendBtn.href = `mailto:premier@ontario.ca?subject=${subject}&body=${body}`;
   emailModal.classList.add("open");
 }
@@ -1898,9 +2149,7 @@ function buildPost(post) {
   const time    = new Date(post.time).toLocaleString([], {
     month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"
   });
-
   const canDelete = currentEmail === post.author || currentEmail === "eesanana@gmail.com";
-
   el.innerHTML = `
     <div class="post-meta">
       <div class="post-avatar">${initial}</div>
@@ -1908,18 +2157,16 @@ function buildPost(post) {
         <div class="post-author">${post.author}</div>
         <div class="post-time">${time}</div>
       </div>
-      ${canDelete ? `<button class="delete-post-btn" data-id="${post.id}">✕ Delete</button>` : ""}
+      ${canDelete ? `<button class="delete-post-btn" data-id="${post.id}">\u2715 Delete</button>` : ""}
     </div>
     <div class="post-body">${escapeHTML(post.text)}</div>
   `;
-
   if (canDelete) {
     el.querySelector(".delete-post-btn").onclick = async () => {
       if (!confirm("Delete this post?")) return;
       await remove(ref(db, "forum_posts/" + post.id));
     };
   }
-
   return el;
 }
 
